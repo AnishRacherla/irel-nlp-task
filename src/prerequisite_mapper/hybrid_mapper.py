@@ -315,65 +315,58 @@ class HybridPrerequisiteMapper:
                                   concepts: List[Dict[str, Any]], 
                                   text: str) -> List[Dict[str, Any]]:
         """
-        Validate prerequisites using Groq LLM (free).
-        Falls back to rule-based validation if no API key is configured.
-
-        Args:
-            prerequisite_candidates: Candidate relationships from NLP
-            concepts: List of all concepts
-            text: Original text
-
-        Returns:
-            Validated prerequisites
+        Use Groq LLM as the PRIMARY prerequisite mapper.
+        NLP candidates are passed as hints, but Groq generates the full map
+        from the concept list + transcript independently.
+        Falls back to rule-based if no API key.
         """
         if not self.groq_client:
-            self.logger.warning("No Groq API key configured — falling back to rule-based prerequisite validation")
+            self.logger.warning("No Groq API key — falling back to rule-based prerequisite validation")
             return self._fallback_prerequisites(prerequisite_candidates)
 
-        self.logger.info(f"Validating prerequisites with Groq ({self.groq_model})...")
+        self.logger.info(f"Generating prerequisite map with Groq ({self.groq_model})...")
 
-        # Build a concept id->name lookup
+        concept_list = [{'id': c['id'], 'name': c['name']} for c in concepts]
         concept_map = {c['id']: c['name'] for c in concepts}
 
-        # Only send top candidates to keep prompt size reasonable
-        top_candidates = sorted(prerequisite_candidates, key=lambda x: x['confidence'], reverse=True)[:20]
-        candidates_simple = [
-            {
-                'prerequisite_id': r['prerequisite'],
-                'prerequisite_name': concept_map.get(r['prerequisite'], r['prerequisite']),
-                'target_id': r['target'],
-                'target_name': concept_map.get(r['target'], r['target']),
-                'confidence': round(float(r['confidence']), 3),
-                'signals': r.get('signals', []),
-            }
-            for r in top_candidates
+        # NLP hints for context (lightweight)
+        nlp_hints = [
+            f"{concept_map.get(r['prerequisite'], r['prerequisite'])} → {concept_map.get(r['target'], r['target'])}"
+            for r in prerequisite_candidates[:10]
         ]
 
-        prompt = f"""You are an expert in {concept_map.get('domain', 'Computer Science')} pedagogy.
+        prompt = f"""You are an expert educator and curriculum designer.
 
-The following prerequisite relationships were detected automatically from an educational transcript.
-Validate each one: confirm it makes pedagogical sense, adjust confidence if needed, and discard clearly wrong ones.
+Given the concept list and transcript below, identify ALL prerequisite relationships between the concepts — i.e. which concept must be understood BEFORE another.
 
-Candidate relationships:
-{json.dumps(candidates_simple, indent=2)}
+Concepts (use these exact IDs):
+{json.dumps(concept_list, indent=2)}
 
-Transcript excerpt (first 2000 chars):
-{text[:2000]}
+NLP-detected hints (may be incomplete or wrong, use as guidance only):
+{json.dumps(nlp_hints, indent=2)}
 
-Respond ONLY with valid JSON in exactly this format:
+Transcript excerpt (first 4000 chars):
+{text[:4000]}
+
+Instructions:
+- Analyse the teaching ORDER in the transcript — concepts introduced earlier are often prerequisites for later ones.
+- Use your domain knowledge to identify pedagogically sound prerequisite relationships even if not explicitly stated.
+- Include ALL meaningful relationships (strict prerequisite, builds_on, recommended_prerequisite).
+- Aim for 8-15 relationships covering the full concept map.
+- Use ONLY the concept IDs provided above.
+
+Respond ONLY with valid JSON:
 {{
     "validated": [
         {{
-            "prerequisite": "<prerequisite_id>",
-            "target": "<target_id>",
-            "confidence": 0.85,
+            "prerequisite": "concept_id_A",
+            "target": "concept_id_B",
+            "confidence": 0.9,
             "relationship_type": "strict_prerequisite|recommended_prerequisite|builds_on|related",
-            "reasoning": "brief reason"
+            "reasoning": "brief pedagogical reason"
         }}
     ]
-}}
-
-Only include relationships with confidence > 0.5."""
+}}"""
 
         try:
             response = self.groq_client.chat.completions.create(
@@ -388,27 +381,34 @@ Only include relationships with confidence > 0.5."""
             result = json.loads(response.choices[0].message.content)
             validated = result.get('validated', [])
 
-            # Merge back extra fields from NLP signals
+            # Filter to valid concept IDs only
+            valid_ids = {c['id'] for c in concepts}
             candidate_index = {(r['prerequisite'], r['target']): r for r in prerequisite_candidates}
             enriched = []
             for v in validated:
-                key = (v['prerequisite'], v['target'])
-                base = candidate_index.get(key, {})
+                if v.get('prerequisite') not in valid_ids or v.get('target') not in valid_ids:
+                    continue
+                if v.get('prerequisite') == v.get('target'):
+                    continue
+                conf = float(v.get('confidence', 0.7))
+                if conf < 0.5:
+                    continue
+                base = candidate_index.get((v['prerequisite'], v['target']), {})
                 enriched.append({
                     **base,
                     'prerequisite': v['prerequisite'],
                     'target': v['target'],
-                    'confidence': v['confidence'],
+                    'confidence': conf,
                     'relationship_type': v.get('relationship_type', 'related'),
                     'reasoning': v.get('reasoning', ''),
                     'validation_method': 'groq_llm',
-                    'strength': 'strong' if v['confidence'] > 0.85 else ('moderate' if v['confidence'] > 0.70 else 'weak'),
+                    'strength': 'strong' if conf > 0.85 else ('moderate' if conf > 0.70 else 'weak'),
                     'status': 'validated',
                 })
-            self.logger.info(f"Groq validated {len(enriched)} prerequisite relationships")
+            self.logger.info(f"Groq generated {len(enriched)} prerequisite relationships")
             return enriched
         except Exception as e:
-            self.logger.error(f"Groq prerequisite validation failed: {e} — falling back to rule-based")
+            self.logger.error(f"Groq prerequisite mapping failed: {e} — falling back to rule-based")
             return self._fallback_prerequisites(prerequisite_candidates)
     
     def _fallback_prerequisites(self, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
