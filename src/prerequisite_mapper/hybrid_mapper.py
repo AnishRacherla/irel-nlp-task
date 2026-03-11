@@ -293,7 +293,7 @@ class HybridPrerequisiteMapper:
             signal_diversity = len(set(rel_data['signals']))
             boost = min(0.2, signal_diversity * 0.1)
             
-            combined_confidence = min(0.95, avg_confidence + boost)
+            combined_confidence = float(min(0.95, avg_confidence + boost))
             
             merged.append({
                 'prerequisite': rel_data['prerequisite'],
@@ -343,7 +343,7 @@ class HybridPrerequisiteMapper:
                 'prerequisite_name': concept_map.get(r['prerequisite'], r['prerequisite']),
                 'target_id': r['target'],
                 'target_name': concept_map.get(r['target'], r['target']),
-                'confidence': round(r['confidence'], 3),
+                'confidence': round(float(r['confidence']), 3),
                 'signals': r.get('signals', []),
             }
             for r in top_candidates
