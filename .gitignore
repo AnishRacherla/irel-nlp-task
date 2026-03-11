@@ -48,6 +48,7 @@ outputs/temp/
 # API Keys
 .env
 config/secrets.yaml
+config/config.yaml
 
 # Jupyter
 .ipynb_checkpoints/
