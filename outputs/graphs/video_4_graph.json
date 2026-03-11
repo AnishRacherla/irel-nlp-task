@@ -1,0 +1,187 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "The Current",
+      "description": "Educational concept: the current",
+      "importance": 4
+    },
+    {
+      "id": "concept_2",
+      "name": "Washing Machine",
+      "description": "Educational concept: washing machine",
+      "importance": 3
+    },
+    {
+      "id": "concept_3",
+      "name": "The Direction",
+      "description": "Educational concept: the direction",
+      "importance": 3
+    },
+    {
+      "id": "concept_4",
+      "name": "Thi Ke",
+      "description": "Educational concept: thi ke",
+      "importance": 3
+    },
+    {
+      "id": "concept_5",
+      "name": "The Megratic Field",
+      "description": "Educational concept: the megratic field",
+      "importance": 3
+    },
+    {
+      "id": "concept_6",
+      "name": "West Ki",
+      "description": "Educational concept: west ki",
+      "importance": 3
+    },
+    {
+      "id": "concept_7",
+      "name": "The Wire",
+      "description": "Educational concept: the wire",
+      "importance": 3
+    },
+    {
+      "id": "concept_8",
+      "name": "The Fuse",
+      "description": "Educational concept: the fuse",
+      "importance": 3
+    },
+    {
+      "id": "concept_9",
+      "name": "Magnetic Field",
+      "description": "Educational concept: magnetic field",
+      "importance": 2
+    },
+    {
+      "id": "concept_10",
+      "name": "Kar Ega",
+      "description": "Educational concept: kar ega",
+      "importance": 2
+    },
+    {
+      "id": "concept_11",
+      "name": "North Pole",
+      "description": "Educational concept: north pole",
+      "importance": 2
+    },
+    {
+      "id": "concept_12",
+      "name": "South Pole",
+      "description": "Educational concept: south pole",
+      "importance": 2
+    },
+    {
+      "id": "concept_13",
+      "name": "Dei Ka",
+      "description": "Educational concept: dei ka",
+      "importance": 2
+    },
+    {
+      "id": "concept_14",
+      "name": "The Join",
+      "description": "Educational concept: the join",
+      "importance": 2
+    },
+    {
+      "id": "concept_15",
+      "name": "The Middle",
+      "description": "Educational concept: the middle",
+      "importance": 2
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_8",
+      "confidence": 0.7691959619522095,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.77"
+    },
+    {
+      "source_id": "concept_14",
+      "target_id": "concept_15",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_13",
+      "target_id": "concept_7",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_6",
+      "target_id": "concept_7",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_6",
+      "target_id": "concept_8",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_8",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_2",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_2",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_14",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_8",
+      "target_id": "concept_14",
+      "confidence": 0.7725067385444744,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.77"
+    },
+    {
+      "source_id": "concept_8",
+      "target_id": "concept_15",
+      "confidence": 0.7725067385444744,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.77"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_7",
+      "confidence": 0.7644204851752021,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.76"
+    },
+    {
+      "source_id": "concept_12",
+      "target_id": "concept_1",
+      "confidence": 0.7536388140161725,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.75"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d5" for="edge" attr.name="reasoning" attr.type="string" />
+  <key id="d4" for="edge" attr.name="confidence" attr.type="float" />
+  <key id="d3" for="edge" attr.name="type" attr.type="string" />
+  <key id="d2" for="node" attr.name="importance" attr.type="long" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="name" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="concept_1">
+      <data key="d0">Search Data Structure</data>
+      <data key="d1">Educational concept: search data structure</data>
+      <data key="d2">5</data>
+    </node>
+    <node id="concept_2">
+      <data key="d0">Data Structure Mein</data>
+      <data key="d1">Educational concept: data structure mein</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_3">
+      <data key="d0">Non-Linear Data Structure</data>
+      <data key="d1">Educational concept: non-linear data structure</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_4">
+      <data key="d0">Se Linear Data Structure</data>
+      <data key="d1">Educational concept: se linear data structure</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_5">
+      <data key="d0">I Ani Data Structure</data>
+      <data key="d1">Educational concept: i ani data structure</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_6">
+      <data key="d0">Hash Tables</data>
+      <data key="d1">Educational concept: hash tables</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_7">
+      <data key="d0">Search Trees</data>
+      <data key="d1">Educational concept: search trees</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_8">
+      <data key="d0">The List</data>
+      <data key="d1">Educational concept: the list</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_9">
+      <data key="d0">بھی Data Structures</data>
+      <data key="d1">Educational concept: بھی data structures</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_10">
+      <data key="d0">Finance Health Care</data>
+      <data key="d1">Educational concept: finance health care</data>
+      <data key="d2">2</data>
+    </node>
+    <node id="concept_11">
+      <data key="d0">Service Sector Entertainment</data>
+      <data key="d1">Educational concept: service sector entertainment</data>
+      <data key="d2">2</data>
+    </node>
+    <node id="concept_12">
+      <data key="d0">Life Sciences</data>
+      <data key="d1">Educational concept: life sciences</data>
+      <data key="d2">2</data>
+    </node>
+    <node id="concept_13">
+      <data key="d0">His Use</data>
+      <data key="d1">Educational concept: his use</data>
+      <data key="d2">2</data>
+    </node>
+    <node id="concept_14">
+      <data key="d0">Top Companies</data>
+      <data key="d1">Educational concept: top companies</data>
+      <data key="d2">2</data>
+    </node>
+    <node id="concept_15">
+      <data key="d0">Job Milne Ke</data>
+      <data key="d1">Educational concept: job milne ke</data>
+      <data key="d2">2</data>
+    </node>
+    <edge source="concept_3" target="concept_5">
+      <data key="d3">weak</data>
+      <data key="d4">0.737998576249395</data>
+      <data key="d5">Confidence: 0.74</data>
+    </edge>
+    <edge source="concept_4" target="concept_1">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7775527715682984</data>
+      <data key="d5">Confidence: 0.78</data>
+    </edge>
+    <edge source="concept_4" target="concept_5">
+      <data key="d3">weak</data>
+      <data key="d4">0.7376896070582526</data>
+      <data key="d5">Confidence: 0.74</data>
+    </edge>
+    <edge source="concept_5" target="concept_1">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7803024083375931</data>
+      <data key="d5">Confidence: 0.78</data>
+    </edge>
+    <edge source="concept_8" target="concept_1">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_13" target="concept_6">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_14" target="concept_6">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_14" target="concept_7">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_15" target="concept_6">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_15" target="concept_7">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_15" target="concept_2">
+      <data key="d3">moderate</data>
+      <data key="d4">0.7999999999999999</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+  </graph>
+</graphml>

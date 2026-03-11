@@ -1,0 +1,297 @@
+{
+  "concepts": [
+    {
+      "id": "concept_1",
+      "name": "Search Data Structure",
+      "description": "Educational concept: search data structure",
+      "importance": 5,
+      "category": "advanced",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 1.1555555555555554,
+        "temporal_position": 0.8214285714285714,
+        "combined": 0.9601587301587301
+      }
+    },
+    {
+      "id": "concept_2",
+      "name": "Data Structure Mein",
+      "description": "Educational concept: data structure mein",
+      "importance": 4,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.8555555555555556,
+        "temporal_position": 0.42857142857142855,
+        "combined": 0.7987301587301588
+      }
+    },
+    {
+      "id": "concept_3",
+      "name": "Non-Linear Data Structure",
+      "description": "Educational concept: non-linear data structure",
+      "importance": 4,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.8555555555555556,
+        "temporal_position": 0.4642857142857143,
+        "combined": 0.7915873015873016
+      }
+    },
+    {
+      "id": "concept_4",
+      "name": "Se Linear Data Structure",
+      "description": "Educational concept: se linear data structure",
+      "importance": 4,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.8555555555555556,
+        "temporal_position": 0.5,
+        "combined": 0.7844444444444445
+      }
+    },
+    {
+      "id": "concept_5",
+      "name": "I Ani Data Structure",
+      "description": "Educational concept: i ani data structure",
+      "importance": 4,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.8555555555555556,
+        "temporal_position": 0.6071428571428571,
+        "combined": 0.7630158730158731
+      }
+    },
+    {
+      "id": "concept_6",
+      "name": "Hash Tables",
+      "description": "Educational concept: hash tables",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5555555555555556,
+        "temporal_position": 0.35714285714285715,
+        "combined": 0.573015873015873
+      }
+    },
+    {
+      "id": "concept_7",
+      "name": "Search Trees",
+      "description": "Educational concept: search trees",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5555555555555556,
+        "temporal_position": 0.35714285714285715,
+        "combined": 0.573015873015873
+      }
+    },
+    {
+      "id": "concept_8",
+      "name": "The List",
+      "description": "Educational concept: the list",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5555555555555556,
+        "temporal_position": 0.5,
+        "combined": 0.5444444444444445
+      }
+    },
+    {
+      "id": "concept_9",
+      "name": "بھی Data Structures",
+      "description": "Educational concept: بھی data structures",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.3555555555555555,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.47730158730158734
+      }
+    },
+    {
+      "id": "concept_10",
+      "name": "Finance Health Care",
+      "description": "Educational concept: finance health care",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25555555555555554,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.39730158730158727
+      }
+    },
+    {
+      "id": "concept_11",
+      "name": "Service Sector Entertainment",
+      "description": "Educational concept: service sector entertainment",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25555555555555554,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.39730158730158727
+      }
+    },
+    {
+      "id": "concept_12",
+      "name": "Life Sciences",
+      "description": "Educational concept: life sciences",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25555555555555554,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.39730158730158727
+      }
+    },
+    {
+      "id": "concept_13",
+      "name": "His Use",
+      "description": "Educational concept: his use",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25555555555555554,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.39730158730158727
+      }
+    },
+    {
+      "id": "concept_14",
+      "name": "Top Companies",
+      "description": "Educational concept: top companies",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25555555555555554,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.39730158730158727
+      }
+    },
+    {
+      "id": "concept_15",
+      "name": "Job Milne Ke",
+      "description": "Educational concept: job milne ke",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25555555555555554,
+        "temporal_position": 0.03571428571428571,
+        "combined": 0.39730158730158727
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "source": "concept_5",
+      "target": "concept_1",
+      "confidence": 0.7803024083375931,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_4",
+      "target": "concept_1",
+      "confidence": 0.7775527715682984,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_3",
+      "target": "concept_5",
+      "confidence": 0.737998576249395,
+      "strength": "weak"
+    },
+    {
+      "source": "concept_4",
+      "target": "concept_5",
+      "confidence": 0.7376896070582526,
+      "strength": "weak"
+    },
+    {
+      "source": "concept_13",
+      "target": "concept_6",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_14",
+      "target": "concept_6",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_15",
+      "target": "concept_6",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_14",
+      "target": "concept_7",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_15",
+      "target": "concept_7",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_15",
+      "target": "concept_2",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_8",
+      "target": "concept_1",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    }
+  ]
+}

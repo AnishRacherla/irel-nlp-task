@@ -1,0 +1,267 @@
+{
+  "concepts": [
+    {
+      "id": "concept_1",
+      "name": "The List",
+      "description": "Educational concept: the list",
+      "importance": 4,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5112359550561798,
+        "temporal_position": 0.016042780748663103,
+        "combined": 0.6057802078952113
+      }
+    },
+    {
+      "id": "concept_2",
+      "name": "The Array",
+      "description": "Educational concept: the array",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5786516853932584,
+        "temporal_position": 0.3422459893048128,
+        "combined": 0.5944721504536442
+      }
+    },
+    {
+      "id": "concept_3",
+      "name": "Our Search",
+      "description": "Educational concept: our search",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5112359550561798,
+        "temporal_position": 0.11764705882352941,
+        "combined": 0.585459352280238
+      }
+    },
+    {
+      "id": "concept_4",
+      "name": "Our Linear Search",
+      "description": "Educational concept: our linear search",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5112359550561798,
+        "temporal_position": 0.26737967914438504,
+        "combined": 0.5555128282160668
+      }
+    },
+    {
+      "id": "concept_5",
+      "name": "The Array Index",
+      "description": "Educational concept: the array index",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5112359550561798,
+        "temporal_position": 0.48128342245989303,
+        "combined": 0.5127320795529653
+      }
+    },
+    {
+      "id": "concept_6",
+      "name": "The Item",
+      "description": "Educational concept: the item",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.35730337078651686,
+        "temporal_position": 0.11764705882352941,
+        "combined": 0.4623132848645076
+      }
+    },
+    {
+      "id": "concept_7",
+      "name": "The Array Coding Index",
+      "description": "Educational concept: the array coding index",
+      "importance": 3,
+      "category": "advanced",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5112359550561798,
+        "temporal_position": 0.9411764705882353,
+        "combined": 0.42075346992729684
+      }
+    },
+    {
+      "id": "concept_8",
+      "name": "The Element",
+      "description": "Educational concept: the element",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.26741573033707866,
+        "temporal_position": 0.016042780748663103,
+        "combined": 0.41072402811993036
+      }
+    },
+    {
+      "id": "concept_9",
+      "name": "The Searching",
+      "description": "Educational concept: the searching",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.22247191011235956,
+        "temporal_position": 0.0213903743315508,
+        "combined": 0.3736994532235775
+      }
+    },
+    {
+      "id": "concept_10",
+      "name": "The Loop",
+      "description": "Educational concept: the loop",
+      "importance": 2,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.30112359550561796,
+        "temporal_position": 0.36363636363636365,
+        "combined": 0.3681716036772217
+      }
+    },
+    {
+      "id": "concept_11",
+      "name": "The First Position",
+      "description": "Educational concept: the first position",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.23370786516853934,
+        "temporal_position": 0.10695187165775401,
+        "combined": 0.3655759178032807
+      }
+    },
+    {
+      "id": "concept_12",
+      "name": "What A",
+      "description": "Educational concept: what a",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.22247191011235956,
+        "temporal_position": 0.1657754010695187,
+        "combined": 0.34482244787598393
+      }
+    },
+    {
+      "id": "concept_13",
+      "name": "The Third Position",
+      "description": "Educational concept: the third position",
+      "importance": 2,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.22247191011235956,
+        "temporal_position": 0.25133689839572193,
+        "combined": 0.3277101484107433
+      }
+    },
+    {
+      "id": "concept_14",
+      "name": "The Items",
+      "description": "Educational concept: the items",
+      "importance": 2,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.25617977528089886,
+        "temporal_position": 0.40641711229946526,
+        "combined": 0.323660397764826
+      }
+    },
+    {
+      "id": "concept_15",
+      "name": "The Value",
+      "description": "Educational concept: the value",
+      "importance": 2,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.27865168539325846,
+        "temporal_position": 0.5026737967914439,
+        "combined": 0.322386588956318
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "source": "concept_5",
+      "target": "concept_7",
+      "confidence": 0.8389509201049805,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_2",
+      "target": "concept_5",
+      "confidence": 0.828811360839854,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_14",
+      "target": "concept_7",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_15",
+      "target": "concept_7",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_12",
+      "target": "concept_2",
+      "confidence": 0.7764705882352941,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_6",
+      "target": "concept_14",
+      "confidence": 0.7666778564453125,
+      "strength": "moderate"
+    }
+  ]
+}

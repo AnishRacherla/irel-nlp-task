@@ -1,0 +1,138 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "The List",
+      "description": "Educational concept: the list",
+      "importance": 4
+    },
+    {
+      "id": "concept_2",
+      "name": "The Array",
+      "description": "Educational concept: the array",
+      "importance": 3
+    },
+    {
+      "id": "concept_3",
+      "name": "Our Search",
+      "description": "Educational concept: our search",
+      "importance": 3
+    },
+    {
+      "id": "concept_4",
+      "name": "Our Linear Search",
+      "description": "Educational concept: our linear search",
+      "importance": 3
+    },
+    {
+      "id": "concept_5",
+      "name": "The Array Index",
+      "description": "Educational concept: the array index",
+      "importance": 3
+    },
+    {
+      "id": "concept_6",
+      "name": "The Item",
+      "description": "Educational concept: the item",
+      "importance": 3
+    },
+    {
+      "id": "concept_7",
+      "name": "The Array Coding Index",
+      "description": "Educational concept: the array coding index",
+      "importance": 3
+    },
+    {
+      "id": "concept_8",
+      "name": "The Element",
+      "description": "Educational concept: the element",
+      "importance": 3
+    },
+    {
+      "id": "concept_9",
+      "name": "The Searching",
+      "description": "Educational concept: the searching",
+      "importance": 2
+    },
+    {
+      "id": "concept_10",
+      "name": "The Loop",
+      "description": "Educational concept: the loop",
+      "importance": 2
+    },
+    {
+      "id": "concept_11",
+      "name": "The First Position",
+      "description": "Educational concept: the first position",
+      "importance": 2
+    },
+    {
+      "id": "concept_12",
+      "name": "What A",
+      "description": "Educational concept: what a",
+      "importance": 2
+    },
+    {
+      "id": "concept_13",
+      "name": "The Third Position",
+      "description": "Educational concept: the third position",
+      "importance": 2
+    },
+    {
+      "id": "concept_14",
+      "name": "The Items",
+      "description": "Educational concept: the items",
+      "importance": 2
+    },
+    {
+      "id": "concept_15",
+      "name": "The Value",
+      "description": "Educational concept: the value",
+      "importance": 2
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_5",
+      "target_id": "concept_7",
+      "confidence": 0.8389509201049805,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.84"
+    },
+    {
+      "source_id": "concept_2",
+      "target_id": "concept_5",
+      "confidence": 0.828811360839854,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.83"
+    },
+    {
+      "source_id": "concept_14",
+      "target_id": "concept_7",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_15",
+      "target_id": "concept_7",
+      "confidence": 0.7999999999999999,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_12",
+      "target_id": "concept_2",
+      "confidence": 0.7764705882352941,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.78"
+    },
+    {
+      "source_id": "concept_6",
+      "target_id": "concept_14",
+      "confidence": 0.7666778564453125,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.77"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+# Configuration for Code-Mixed Pedagogical Flow Extractor
+
+# Video Sources Configuration
+video_sources:
+  # Add your 5 video sources here with metadata
+  video_1:
+    url: "https://www.youtube.com/watch?v=XV-lIaO00H8"
+    language: "auto"  # Auto-detect language
+    domain: "Computer Science"
+    duration_minutes: 10
+  
+  video_2:
+    url: "https://www.youtube.com/watch?v=IlWB81vEH7g"
+    language: "auto"
+    domain: "Computer Science"
+    duration_minutes: 10
+  
+  video_3:
+    url: "https://www.youtube.com/watch?v=cOSTc6qBRQw"
+    language: "auto"
+    domain: "Computer Science"
+    duration_minutes: 10
+  
+  video_4:
+    url: "https://www.youtube.com/watch?v=SkE2kD2U4tU"
+    language: "auto"
+    domain: "Magnetism"
+    duration_minutes: 30
+  
+  video_5:
+    url: ""
+    language: "Kannada-English"
+    domain: "Computer Science"
+    duration_minutes: 10
+
+# Transcription Settings
+transcription:
+  model: "whisper"  # Options: whisper, deepgram
+  whisper_model_size: "base"  # tiny, base, small, medium, large - CHANGED TO BASE FOR SPEED
+  language: "auto"  # Auto-detect or specify
+  output_format: "json"
+
+# Language Processing Settings
+language_processing:
+  detect_code_mixing: true
+  primary_languages:
+    - "en"  # English
+    - "hi"  # Hindi
+    - "ta"  # Tamil
+    - "te"  # Telugu
+    - "kn"  # Kannada
+  
+  # Standardization approach
+  standardization_method: "llm"  # Options: llm, dictionary, hybrid
+
+# Concept Extraction Settings
+concept_extraction:
+  method: "llm"  # Options: llm, keyword, ner, hybrid
+  llm_provider: "openai"  # Options: openai, anthropic, local
+  model: "gpt-4o-mini"  # or gpt-4, claude-3-sonnet, etc.
+  
+  extraction_prompts:
+    system: "You are an expert in educational content analysis and concept extraction."
+    
+  min_concept_confidence: 0.7
+  max_concepts_per_video: 20
+
+# Prerequisite Mapping Settings
+prerequisite_mapping:
+  method: "llm"  # Options: llm, rule_based, graph_analysis
+  relationship_types:
+    - "prerequisite"  # A must be learned before B
+    - "related"  # A and B are related concepts
+    - "builds_on"  # B builds upon A
+  
+  confidence_threshold: 0.6
+
+# Output Settings
+output:
+  format: "json"  # Primary format
+  generate_graph: true
+  generate_visualization: true
+  
+  graph_formats:
+    - "json"  # Machine-readable
+    - "graphml"  # Standard graph format
+    - "dot"  # GraphViz format
+  
+  visualization_formats:
+    - "html"  # Interactive HTML
+    - "png"  # Static image
+
+# Paths
+paths:
+  data_dir: "data"
+  output_dir: "outputs"
+  temp_dir: "outputs/temp"
+  video_dir: "data/videos"
+  audio_dir: "data/audio"
+  transcripts_dir: "data/transcripts"
+  graphs_dir: "outputs/graphs"
+  visualizations_dir: "outputs/visualizations"
+
+# API Keys (OPTIONAL - Leave empty for 100% FREE mode!)
+api_keys:
+  openai_api_key: ""  # Not needed - FREE mode uses only traditional NLP
+  anthropic_api_key: ""  # Not used

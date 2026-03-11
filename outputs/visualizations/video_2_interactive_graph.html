@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "color": "#FF6B6B", "font": {"color": "black"}, "id": "concept_1", "label": "The List", "shape": "dot", "size": 40, "title": "\u003cb\u003eThe List\u003c/b\u003e\u003cbr\u003eEducational concept: the list"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_2", "label": "The Array", "shape": "dot", "size": 35, "title": "\u003cb\u003eThe Array\u003c/b\u003e\u003cbr\u003eEducational concept: the array"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_3", "label": "Our Search", "shape": "dot", "size": 35, "title": "\u003cb\u003eOur Search\u003c/b\u003e\u003cbr\u003eEducational concept: our search"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_4", "label": "Our Linear Search", "shape": "dot", "size": 35, "title": "\u003cb\u003eOur Linear Search\u003c/b\u003e\u003cbr\u003eEducational concept: our linear search"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_5", "label": "The Array Index", "shape": "dot", "size": 35, "title": "\u003cb\u003eThe Array Index\u003c/b\u003e\u003cbr\u003eEducational concept: the array index"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_6", "label": "The Item", "shape": "dot", "size": 35, "title": "\u003cb\u003eThe Item\u003c/b\u003e\u003cbr\u003eEducational concept: the item"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_7", "label": "The Array Coding Index", "shape": "dot", "size": 35, "title": "\u003cb\u003eThe Array Coding Index\u003c/b\u003e\u003cbr\u003eEducational concept: the array coding index"}, {"borderWidth": 2, "color": "#4ECDC4", "font": {"color": "black"}, "id": "concept_8", "label": "The Element", "shape": "dot", "size": 35, "title": "\u003cb\u003eThe Element\u003c/b\u003e\u003cbr\u003eEducational concept: the element"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_9", "label": "The Searching", "shape": "dot", "size": 30, "title": "\u003cb\u003eThe Searching\u003c/b\u003e\u003cbr\u003eEducational concept: the searching"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_10", "label": "The Loop", "shape": "dot", "size": 30, "title": "\u003cb\u003eThe Loop\u003c/b\u003e\u003cbr\u003eEducational concept: the loop"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_11", "label": "The First Position", "shape": "dot", "size": 30, "title": "\u003cb\u003eThe First Position\u003c/b\u003e\u003cbr\u003eEducational concept: the first position"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_12", "label": "What A", "shape": "dot", "size": 30, "title": "\u003cb\u003eWhat A\u003c/b\u003e\u003cbr\u003eEducational concept: what a"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_13", "label": "The Third Position", "shape": "dot", "size": 30, "title": "\u003cb\u003eThe Third Position\u003c/b\u003e\u003cbr\u003eEducational concept: the third position"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_14", "label": "The Items", "shape": "dot", "size": 30, "title": "\u003cb\u003eThe Items\u003c/b\u003e\u003cbr\u003eEducational concept: the items"}, {"borderWidth": 2, "color": "#95E1D3", "font": {"color": "black"}, "id": "concept_15", "label": "The Value", "shape": "dot", "size": 30, "title": "\u003cb\u003eThe Value\u003c/b\u003e\u003cbr\u003eEducational concept: the value"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#7F8C8D", "dashes": [2, 2], "from": "concept_5", "title": "moderate\u003cbr\u003eConfidence: 0.84\u003cbr\u003eConfidence: 0.84", "to": "concept_7", "width": 1}, {"arrows": "to", "color": "#7F8C8D", "dashes": [2, 2], "from": "concept_2", "title": "moderate\u003cbr\u003eConfidence: 0.83\u003cbr\u003eConfidence: 0.83", "to": "concept_5", "width": 1}, {"arrows": "to", "color": "#7F8C8D", "dashes": [2, 2], "from": "concept_14", "title": "moderate\u003cbr\u003eConfidence: 0.80\u003cbr\u003eConfidence: 0.80", "to": "concept_7", "width": 1}, {"arrows": "to", "color": "#7F8C8D", "dashes": [2, 2], "from": "concept_15", "title": "moderate\u003cbr\u003eConfidence: 0.80\u003cbr\u003eConfidence: 0.80", "to": "concept_7", "width": 1}, {"arrows": "to", "color": "#7F8C8D", "dashes": [2, 2], "from": "concept_12", "title": "moderate\u003cbr\u003eConfidence: 0.78\u003cbr\u003eConfidence: 0.78", "to": "concept_2", "width": 1}, {"arrows": "to", "color": "#7F8C8D", "dashes": [2, 2], "from": "concept_6", "title": "moderate\u003cbr\u003eConfidence: 0.77\u003cbr\u003eConfidence: 0.77", "to": "concept_14", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -8000, "centralGravity": 0.3, "springLength": 200, "springConstant": 0.04}}, "edges": {"smooth": {"type": "curvedCW", "roundness": 0.2}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

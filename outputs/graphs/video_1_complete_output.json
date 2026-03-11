@@ -1,0 +1,321 @@
+{
+  "concepts": [
+    {
+      "id": "concept_1",
+      "name": "Our Python Learning Journey",
+      "description": "Educational concept: our python learning journey",
+      "importance": 5,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.8126582278481013,
+        "temporal_position": 0.0375,
+        "combined": 0.8426265822784811
+      }
+    },
+    {
+      "id": "concept_2",
+      "name": "Good Machine Learning",
+      "description": "Educational concept: good machine learning",
+      "importance": 4,
+      "category": "advanced",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.8063291139240507,
+        "temporal_position": 0.9125,
+        "combined": 0.6625632911392406
+      }
+    },
+    {
+      "id": "concept_3",
+      "name": "Data Science",
+      "description": "Educational concept: data science",
+      "importance": 4,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5443037974683544,
+        "temporal_position": 0.075,
+        "combined": 0.6204430379746836
+      }
+    },
+    {
+      "id": "concept_4",
+      "name": "Our Python Programming Journey",
+      "description": "Educational concept: our python programming journey",
+      "importance": 4,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5189873417721519,
+        "temporal_position": 0.0,
+        "combined": 0.6151898734177215
+      }
+    },
+    {
+      "id": "concept_5",
+      "name": "Python Programming",
+      "description": "Educational concept: python programming",
+      "importance": 4,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5126582278481012,
+        "temporal_position": 0.0,
+        "combined": 0.6101265822784809
+      }
+    },
+    {
+      "id": "concept_6",
+      "name": "Our Python",
+      "description": "Educational concept: our python",
+      "importance": 4,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.0,
+        "combined": 0.6050632911392406
+      }
+    },
+    {
+      "id": "concept_7",
+      "name": "Data Analysis",
+      "description": "Educational concept: data analysis",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.075,
+        "combined": 0.5900632911392406
+      }
+    },
+    {
+      "id": "concept_8",
+      "name": "Python Fundamentals",
+      "description": "Educational concept: python fundamentals",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.1,
+        "combined": 0.5850632911392406
+      }
+    },
+    {
+      "id": "concept_9",
+      "name": "Our Learning Journey",
+      "description": "Educational concept: our learning journey",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.16875,
+        "combined": 0.5713132911392406
+      }
+    },
+    {
+      "id": "concept_10",
+      "name": "Your Learning Journey",
+      "description": "Educational concept: your learning journey",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.1875,
+        "combined": 0.5675632911392405
+      }
+    },
+    {
+      "id": "concept_11",
+      "name": "Enough Python",
+      "description": "Educational concept: enough python",
+      "importance": 3,
+      "category": "fundamental",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.23125,
+        "combined": 0.5588132911392406
+      }
+    },
+    {
+      "id": "concept_12",
+      "name": "Data Types",
+      "description": "Educational concept: data types",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.38125,
+        "combined": 0.5288132911392406
+      }
+    },
+    {
+      "id": "concept_13",
+      "name": "This Learning",
+      "description": "Educational concept: this learning",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.4375,
+        "combined": 0.5175632911392406
+      }
+    },
+    {
+      "id": "concept_14",
+      "name": "Intermediate Python",
+      "description": "Educational concept: intermediate python",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.45,
+        "combined": 0.5150632911392405
+      }
+    },
+    {
+      "id": "concept_15",
+      "name": "The Python-Specific Data Structures",
+      "description": "Educational concept: the python-specific data structures",
+      "importance": 3,
+      "category": "intermediate",
+      "is_valid": true,
+      "validation_method": "rule_based_free",
+      "nlp_scores": {
+        "keybert": 0.0,
+        "np_frequency": 0.5063291139240507,
+        "temporal_position": 0.46875,
+        "combined": 0.5113132911392406
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "source": "concept_11",
+      "target": "concept_14",
+      "confidence": 0.8408349335193634,
+      "strength": "strong"
+    },
+    {
+      "source": "concept_8",
+      "target": "concept_11",
+      "confidence": 0.8031907081604004,
+      "strength": "strong"
+    },
+    {
+      "source": "concept_10",
+      "target": "concept_13",
+      "confidence": 0.7688169807195664,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_1",
+      "target": "concept_8",
+      "confidence": 0.7296462178230285,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_13",
+      "target": "concept_2",
+      "confidence": 0.7203526973724366,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_12",
+      "target": "concept_15",
+      "confidence": 0.7014921098947524,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_4",
+      "target": "concept_5",
+      "confidence": 0.9,
+      "strength": "strong"
+    },
+    {
+      "source": "concept_9",
+      "target": "concept_12",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_11",
+      "target": "concept_13",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_14",
+      "target": "concept_2",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_15",
+      "target": "concept_2",
+      "confidence": 0.7999999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_10",
+      "target": "concept_12",
+      "confidence": 0.79375,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_11",
+      "target": "concept_12",
+      "confidence": 0.7499999999999999,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_9",
+      "target": "concept_10",
+      "confidence": 0.7499954104423523,
+      "strength": "moderate"
+    },
+    {
+      "source": "concept_4",
+      "target": "concept_1",
+      "confidence": 0.7343812584877014,
+      "strength": "moderate"
+    }
+  ]
+}
