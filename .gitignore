@@ -53,6 +53,7 @@ config/config.yaml
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb
+!irel_colab_notebook.ipynb
 
 # OS
 .DS_Store
