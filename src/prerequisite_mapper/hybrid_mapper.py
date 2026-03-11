@@ -1,15 +1,15 @@
 """
 Prerequisite mapping module (Hybrid Approach)
-Uses cue phrases + temporal order + dependency parsing + embeddings + LLM validation
+Uses cue phrases + temporal order + dependency parsing + embeddings + Groq LLM validation
 """
 
 from typing import Dict, List, Any, Tuple
-import openai
 import json
 import re
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from groq import Groq
 
 
 class HybridPrerequisiteMapper:
@@ -25,11 +25,10 @@ class HybridPrerequisiteMapper:
         """
         self.config = config
         self.logger = logger
-        self.openai_api_key = config.get('api_keys', {}).get('openai_api_key', '')
-        
-        if self.openai_api_key:
-            openai.api_key = self.openai_api_key
-        
+        self.groq_api_key = config.get('api_keys', {}).get('groq_api_key', '')
+        self.groq_client = Groq(api_key=self.groq_api_key) if self.groq_api_key else None
+        self.groq_model = config.get('concept_extraction', {}).get('groq_model', 'llama-3.3-70b-versatile')
+
         self.embedding_model = None
         
         # Prerequisite cue phrases (signals)
@@ -316,20 +315,101 @@ class HybridPrerequisiteMapper:
                                   concepts: List[Dict[str, Any]], 
                                   text: str) -> List[Dict[str, Any]]:
         """
-        Validate prerequisites using ONLY traditional NLP (FREE - no API calls)
-        
+        Validate prerequisites using Groq LLM (free).
+        Falls back to rule-based validation if no API key is configured.
+
         Args:
             prerequisite_candidates: Candidate relationships from NLP
             concepts: List of all concepts
             text: Original text
-        
+
         Returns:
-            Validated prerequisites using rule-based filtering
+            Validated prerequisites
         """
-        self.logger.info("FREE MODE: Using rule-based validation (no LLM)")
-        
-        # Use completely free rule-based validation
-        return self._fallback_prerequisites(prerequisite_candidates)
+        if not self.groq_client:
+            self.logger.warning("No Groq API key configured — falling back to rule-based prerequisite validation")
+            return self._fallback_prerequisites(prerequisite_candidates)
+
+        self.logger.info(f"Validating prerequisites with Groq ({self.groq_model})...")
+
+        # Build a concept id->name lookup
+        concept_map = {c['id']: c['name'] for c in concepts}
+
+        # Only send top candidates to keep prompt size reasonable
+        top_candidates = sorted(prerequisite_candidates, key=lambda x: x['confidence'], reverse=True)[:20]
+        candidates_simple = [
+            {
+                'prerequisite_id': r['prerequisite'],
+                'prerequisite_name': concept_map.get(r['prerequisite'], r['prerequisite']),
+                'target_id': r['target'],
+                'target_name': concept_map.get(r['target'], r['target']),
+                'confidence': round(r['confidence'], 3),
+                'signals': r.get('signals', []),
+            }
+            for r in top_candidates
+        ]
+
+        prompt = f"""You are an expert in {concept_map.get('domain', 'Computer Science')} pedagogy.
+
+The following prerequisite relationships were detected automatically from an educational transcript.
+Validate each one: confirm it makes pedagogical sense, adjust confidence if needed, and discard clearly wrong ones.
+
+Candidate relationships:
+{json.dumps(candidates_simple, indent=2)}
+
+Transcript excerpt (first 2000 chars):
+{text[:2000]}
+
+Respond ONLY with valid JSON in exactly this format:
+{{
+    "validated": [
+        {{
+            "prerequisite": "<prerequisite_id>",
+            "target": "<target_id>",
+            "confidence": 0.85,
+            "relationship_type": "strict_prerequisite|recommended_prerequisite|builds_on|related",
+            "reasoning": "brief reason"
+        }}
+    ]
+}}
+
+Only include relationships with confidence > 0.5."""
+
+        try:
+            response = self.groq_client.chat.completions.create(
+                model=self.groq_model,
+                messages=[
+                    {"role": "system", "content": "You are an expert in curriculum design and educational content analysis. Always respond with valid JSON only."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.2,
+                response_format={"type": "json_object"},
+            )
+            result = json.loads(response.choices[0].message.content)
+            validated = result.get('validated', [])
+
+            # Merge back extra fields from NLP signals
+            candidate_index = {(r['prerequisite'], r['target']): r for r in prerequisite_candidates}
+            enriched = []
+            for v in validated:
+                key = (v['prerequisite'], v['target'])
+                base = candidate_index.get(key, {})
+                enriched.append({
+                    **base,
+                    'prerequisite': v['prerequisite'],
+                    'target': v['target'],
+                    'confidence': v['confidence'],
+                    'relationship_type': v.get('relationship_type', 'related'),
+                    'reasoning': v.get('reasoning', ''),
+                    'validation_method': 'groq_llm',
+                    'strength': 'strong' if v['confidence'] > 0.85 else ('moderate' if v['confidence'] > 0.70 else 'weak'),
+                    'status': 'validated',
+                })
+            self.logger.info(f"Groq validated {len(enriched)} prerequisite relationships")
+            return enriched
+        except Exception as e:
+            self.logger.error(f"Groq prerequisite validation failed: {e} — falling back to rule-based")
+            return self._fallback_prerequisites(prerequisite_candidates)
     
     def _fallback_prerequisites(self, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Rule-based prerequisite validation (completely free)"""

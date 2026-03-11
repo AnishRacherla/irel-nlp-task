@@ -55,15 +55,21 @@ language_processing:
 
 # Concept Extraction Settings
 concept_extraction:
-  method: "llm"  # Options: llm, keyword, ner, hybrid
-  llm_provider: "openai"  # Options: openai, anthropic, local
-  model: "gpt-4o-mini"  # or gpt-4, claude-3-sonnet, etc.
+  method: "hybrid"  # Options: llm, keyword, ner, hybrid
+  llm_provider: "groq"  # Options: openai, anthropic, groq, local
+  model: "gpt-4o-mini"  # kept for legacy openai path
+  groq_model: "llama-3.3-70b-versatile"  # Free Groq model (llama-3.3-70b-versatile, llama3-8b-8192, mixtral-8x7b-32768)
   
   extraction_prompts:
     system: "You are an expert in educational content analysis and concept extraction."
     
   min_concept_confidence: 0.7
   max_concepts_per_video: 20
+
+# API Keys (override via environment variables or .env file)
+api_keys:
+  groq_api_key: ""
+  openai_api_key: ""  # Optional legacy fallback
 
 # Prerequisite Mapping Settings
 prerequisite_mapping:

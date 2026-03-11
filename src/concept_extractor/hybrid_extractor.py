@@ -1,16 +1,16 @@
 """
 Concept extraction module (Hybrid Approach)
-Uses KeyBERT + NP extraction + Embeddings + LLM validation
+Uses KeyBERT (full text, GPU) + NP extraction + Embeddings + Groq LLM validation
 """
 
 from typing import Dict, List, Any, Tuple
-import openai
 import json
 from collections import Counter
 from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from groq import Groq
 
 
 class HybridConceptExtractor:
@@ -26,41 +26,59 @@ class HybridConceptExtractor:
         """
         self.config = config
         self.logger = logger
-        self.openai_api_key = config.get('api_keys', {}).get('openai_api_key', '')
-        
-        if self.openai_api_key:
-            openai.api_key = self.openai_api_key
+        self.groq_api_key = config.get('api_keys', {}).get('groq_api_key', '')
+        self.groq_client = Groq(api_key=self.groq_api_key) if self.groq_api_key else None
+        self.groq_model = config.get('concept_extraction', {}).get('groq_model', 'llama-3.3-70b-versatile')
         
         # Initialize models
         self.keybert_model = None
         self.embedding_model = None
     
     def _load_models(self):
-        """Load KeyBERT and embedding models lazily"""
-        if self.keybert_model is None:
-            self.logger.info("Loading KeyBERT model...")
-            self.keybert_model = KeyBERT()
-            self.logger.info("KeyBERT loaded")
-        
+        """Load KeyBERT and embedding models lazily (uses GPU if available)"""
+        import torch
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.logger.info(f"Loading models on device: {device}")
+
         if self.embedding_model is None:
             self.logger.info("Loading sentence transformer model...")
-            self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+            self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2', device=device)
             self.logger.info("Sentence transformer loaded")
+
+        if self.keybert_model is None:
+            self.logger.info("Loading KeyBERT model (full text, GPU-accelerated)...")
+            self.keybert_model = KeyBERT(model=self.embedding_model)
+            self.logger.info("KeyBERT loaded")
     
     def extract_keywords_keybert(self, text: str, top_n: int = 20) -> List[Tuple[str, float]]:
         """
-        OPTIMIZED: Skip KeyBERT, rank noun phrases by semantic relevance instead
-        Same concept as KeyBERT but MUCH faster using pre-extracted noun phrases
-        
+        Extract keywords from the FULL text using KeyBERT (GPU-accelerated).
+        Previously limited to noun phrases only due to runtime; GPU removes that constraint.
+
         Args:
-            text: Input text (not used, we rank noun phrases directly)
+            text: Full input text
             top_n: Number of keywords to extract
-        
+
         Returns:
             List of (keyword, score) tuples
         """
-        self.logger.info("Using semantic ranking on noun phrases (KeyBERT concept, but faster)")
-        return []  # Will be filled by noun phrase ranking in merge step
+        if not text.strip():
+            return []
+
+        self._load_models()
+        self.logger.info("Extracting KeyBERT keywords from full text...")
+
+        # Use n-gram range 1-3 on the complete text; MMR ensures diversity
+        keywords = self.keybert_model.extract_keywords(
+            text,
+            keyphrase_ngram_range=(1, 3),
+            stop_words='english',
+            use_mmr=True,
+            diversity=0.5,
+            top_n=top_n,
+        )
+        self.logger.info(f"KeyBERT extracted {len(keywords)} keywords from full text")
+        return keywords
     
     def extract_noun_phrases(self, noun_phrases: List[str]) -> List[Tuple[str, float]]:
         """
@@ -330,20 +348,75 @@ class HybridConceptExtractor:
     def llm_validate_concepts(self, concept_candidates: List[Dict[str, Any]], 
                              text: str, domain: str = "Computer Science") -> List[Dict[str, Any]]:
         """
-        Validate concepts using ONLY traditional NLP (FREE - no API calls)
-        
+        Validate and enrich concepts using Groq LLM (free).
+        Falls back to rule-based validation if no API key is configured.
+
         Args:
             concept_candidates: List of concept candidates from NLP extraction
             text: Original text
             domain: Academic domain
-        
+
         Returns:
-            Validated concepts using rule-based filtering
+            Validated and enriched concepts
         """
-        self.logger.info("FREE MODE: Using rule-based validation (no LLM)")
-        
-        # Use completely free rule-based validation
-        return self._fallback_concepts(concept_candidates[:15])
+        if not self.groq_client:
+            self.logger.warning("No Groq API key configured — falling back to rule-based validation")
+            return self._fallback_concepts(concept_candidates[:15])
+
+        self.logger.info(f"Validating concepts with Groq ({self.groq_model})...")
+
+        candidate_names = [c['name'] for c in concept_candidates[:20]]
+        prompt = f"""You are an expert in {domain} education and curriculum design.
+
+Below is a list of candidate concepts extracted from an educational transcript, followed by a short excerpt of that transcript.
+
+Candidate concepts:
+{json.dumps(candidate_names, indent=2)}
+
+Transcript excerpt (first 3000 chars):
+{text[:3000]}
+
+Your tasks:
+1. Keep only genuine educational concepts relevant to the transcript.
+2. Remove generic/filler words that are not real concepts.
+3. For each kept concept provide a brief description, importance (1-5), category (fundamental/intermediate/advanced), and 2-4 keywords/aliases.
+
+Respond ONLY with valid JSON in exactly this format:
+{{
+    "concepts": [
+        {{
+            "id": "concept_1",
+            "name": "Concept Name",
+            "description": "Brief description",
+            "importance": 4,
+            "category": "fundamental|intermediate|advanced",
+            "keywords": ["keyword1", "keyword2"],
+            "is_valid": true,
+            "validation_method": "groq_llm"
+        }}
+    ]
+}}"""
+
+        try:
+            response = self.groq_client.chat.completions.create(
+                model=self.groq_model,
+                messages=[
+                    {"role": "system", "content": "You are an expert in educational content analysis. Always respond with valid JSON only."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.2,
+                response_format={"type": "json_object"},
+            )
+            result = json.loads(response.choices[0].message.content)
+            concepts = result.get('concepts', [])
+            # Re-number IDs
+            for i, c in enumerate(concepts):
+                c['id'] = f"concept_{i+1}"
+            self.logger.info(f"Groq validated {len(concepts)} concepts")
+            return concepts
+        except Exception as e:
+            self.logger.error(f"Groq validation failed: {e} — falling back to rule-based")
+            return self._fallback_concepts(concept_candidates[:15])
     
     def _fallback_concepts(self, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Rule-based concept validation (completely free)"""
