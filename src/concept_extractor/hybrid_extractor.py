@@ -114,26 +114,35 @@ class HybridConceptExtractor:
         # Technical indicators (suggests educational concept)
         technical_patterns = [
             lambda w: w[0].isupper() and len(w) > 3,  # Capitalized technical terms
-            lambda w: w.lower() in ['python', 'java', 'javascript', 'algorithm', 'data', 'structure',
-                                     'machine', 'learning', 'neural', 'network', 'database', 'query',
-                                     'binary', 'tree', 'graph', 'array', 'list', 'stack', 'queue',
-                                     'sort', 'search', 'hash', 'table', 'api', 'server', 'client'],
+            lambda w: w.lower() in [
+                'python', 'java', 'javascript', 'algorithm', 'data', 'structure',
+                'machine', 'learning', 'neural', 'network', 'database', 'query',
+                'binary', 'tree', 'graph', 'array', 'list', 'stack', 'queue',
+                'sort', 'search', 'hash', 'table', 'api', 'server', 'client',
+                # Physics / electronics
+                'solenoid', 'electromagnet', 'magnetism', 'electromagnetism',
+                'conductor', 'resistor', 'capacitor', 'inductor', 'transistor',
+                'voltage', 'current', 'resistance', 'circuit', 'frequency',
+                # General CS
+                'recursion', 'polymorphism', 'inheritance', 'encapsulation',
+                'abstraction', 'compiler', 'interpreter', 'pointer', 'memory',
+            ],
         ]
-        
+
         # Count frequencies
         phrase_counts = Counter(np.lower() for np in noun_phrases)
-        
+
         # Normalize scores
         max_count = max(phrase_counts.values()) if phrase_counts else 1
-        
+
         # INTELLIGENT filtering
         scored_phrases = []
         for phrase, count in phrase_counts.items():
             words = phrase.split()
             phrase_lower = phrase.lower()
-            
-            # Basic filters
-            if len(words) < 2 or len(words) > 4:  # 2-4 words
+
+            # Basic filters — allow 1-word technical terms, up to 5 words
+            if len(words) < 1 or len(words) > 5:
                 continue
             if phrase_lower in blacklist_phrases:  # Exact blacklist match
                 continue
@@ -368,7 +377,7 @@ class HybridConceptExtractor:
         candidate_names = [c['name'] for c in concept_candidates[:20]]
         prompt = f"""You are an expert in {domain} education and curriculum design.
 
-Below is a list of candidate concepts extracted from an educational transcript, followed by a short excerpt of that transcript.
+Below is a list of candidate concepts automatically extracted from an educational transcript, followed by a short excerpt of the transcript.
 
 Candidate concepts:
 {json.dumps(candidate_names, indent=2)}
@@ -377,9 +386,11 @@ Transcript excerpt (first 3000 chars):
 {text[:3000]}
 
 Your tasks:
-1. Keep only genuine educational concepts relevant to the transcript.
-2. Remove generic/filler words that are not real concepts.
-3. For each kept concept provide a brief description, importance (1-5), category (fundamental/intermediate/advanced), and 2-4 keywords/aliases.
+1. Keep ALL genuine educational / domain-specific concepts from the candidate list — be INCLUSIVE, not restrictive.
+2. Also add any important concepts clearly taught in the transcript that are missing from the candidates (e.g. named rules, laws, experiments, devices).
+3. Only remove obvious filler words (e.g. "our mind", "first step").
+4. Target 10-20 concepts total. Do NOT return fewer than 8 unless the transcript is very short.
+5. For each concept provide: a brief description, importance (1-5), category (fundamental/intermediate/advanced), and 2-4 keywords.
 
 Respond ONLY with valid JSON in exactly this format:
 {{
