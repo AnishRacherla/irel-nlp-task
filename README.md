@@ -35,12 +35,12 @@ This system adds a translation/standardisation layer before concept extraction a
 | ID | URL | Language Mix | Domain |
 |---|---|---|---|
 | video_1 | [youtu.be/DWpVGpNfDmM](https://www.youtube.com/watch?v=DWpVGpNfDmM&list=PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU&index=8) | English + Hindi | Computer Science (Python) |
-| video_2 | [youtu.be/SkE2kD2U4tU](https://www.youtube.com/watch?v=SkE2kD2U4tU) | English + Telugu | Physics (Magnetism) |
+| video_2 | [youtu.be/SkE2kD2U4tU](https://www.youtube.com/watch?v=SkE2kD2U4tU) | English + Telugu | Physics (Computer Science ) |
 | video_3 | [youtu.be/-kGMwaROIZk](https://www.youtube.com/watch?v=-kGMwaROIZk&list=PL724pdDXl9Q1KxL7dQ6HlyjO7tbJzfh5f) | English + Hindi | Computer Science (Python) |
 | video_4 | [youtu.be/SkE2kD2U4tU](https://www.youtube.com/watch?v=SkE2kD2U4tU) | English + Telugu | Physics (Magnetism) |
 | video_5 | [youtu.be/98BzS5Oz5E4](https://www.youtube.com/watch?v=98BzS5Oz5E4) | English + Hindi | Computer Science |
 
-Videos were selected to test the pipeline across two domains (CS and Physics) and two non-English languages (Hindi and Telugu) to verify domain-agnostic and language-agnostic behaviour.
+Videos were selected to test the pipeline across two domains (CS and Physics) and a non-English languages (Hindi and English) to verify domain-agnostic and language-agnostic behaviour.
 
 ---
 
@@ -52,7 +52,7 @@ YouTube URL
     ▼
 ┌─────────────────────────────┐
 │  1. Transcription           │  OpenAI Whisper (large-v3, GPU)
-│     yt-dlp → audio → text  │
+│     yt-dlp → audio → text  │  → timestamped transcript
 └────────────┬────────────────┘
              │
              ▼
@@ -102,20 +102,21 @@ YouTube URL
 
 ### Stage 1 — Transcription (`src/transcription/transcribe.py`)
 
-`yt-dlp` downloads the audio track; Whisper `large-v3` converts it to text with timestamps. The `large-v3` model gives the best transcription accuracy, especially for code-mixed speech with Hindi/Telugu — the T4 GPU on Colab handles it within a reasonable time. The transcript is stored under `data/transcripts/`.
+`yt-dlp` downloads the audio track; Whisper `large-v3` converts it to text with timestamps. `large-v3` is chosen because it is OpenAI's highest-accuracy Whisper model — it handles code-mixed speech (Hindi/Telugu words inside English sentences) and informal pronunciation significantly better than smaller variants like `base` or `small`. Transcripts are stored under `data/transcripts/`.
 
 ### Stage 2 — Preprocessing (`src/preprocessing/preprocessor.py`)
 
-spaCy (`en_core_web_sm`) tokenises the text, extracts noun phrases, and runs a dependency parser. Ten cue-phrase regex patterns are applied to detect explicit pedagogical signals such as *"requires"*, *"builds on"*, *"before understanding"*, and *"depends on"*. NLTK provides sentence segmentation and stopword filtering.
+spaCy (`en_core_web_sm`) tokenises the text and extracts **noun phrases** — the key insight here is that educational concepts are almost always nouns or noun phrases (*"Binary Search Tree"*, *"Magnetic Flux"*), so restricting candidates to NPs immediately removes a large amount of verb-phrase and adverbial junk. A dependency parser is also run to capture syntactic relationships between tokens.
+
+Ten **cue-phrase regex patterns** are applied to find explicit pedagogical signals in the transcript — expressions like *"requires"*, *"builds on"*, *"before understanding"*, *"depends on"*, and *"once you know"*. When an instructor says *"before understanding loops, you need to know variables"*, the cue phrase *"before understanding"* directly encodes a prerequisite relationship. NLTK provides sentence segmentation and stopword filtering.
 
 ### Stage 3 — Code-Mixed Language Processing (`src/code_mixed_processor/language_processor.py`)
 
-A three-layer translation cascade:
-1. **Hardcoded dictionary** — common Telugu and Hindi technical/filler terms mapped to English equivalents (e.g. `"undi"` → `"is"`, `"matlab"` → `"means"`). Zero latency, no API call.
-2. **Google Translate fallback** (`deep_translator`) — sentence-level translation for anything not in the dictionary.
-3. **LLM refinement** — skipped in the current free-mode configuration to conserve Groq tokens; the LLM validation in Stage 4 implicitly handles remaining noise.
+A two-layer translation cascade:
+1. **Hardcoded dictionary** (priority) — common Telugu and Hindi technical terms and filler words mapped to English equivalents (e.g. `"undi"` → `"is"`, `"matlab"` → `"means"`, `"karke"` → `"by doing"`). The dictionary is applied first because it preserves the exact intended meaning — a human-verified translation is more reliable than a statistical one for recurring domain-specific terms.
+2. **Google Translate fallback** (`deep_translator`) — sentence-level translation for anything not covered by the dictionary. The dictionary has limited vocabulary by design, so Google Translate handles the long tail of less common words and full non-English sentences.
 
-**Rationale:** The hardcoded dictionary handles the most frequent fillers cheaply; Google Translate catches the long tail; skipping LLM refinement here preserves Groq quota for the higher-value concept and prerequisite stages.
+**Rationale:** Prioritising the dictionary over a general-purpose translator avoids translation drift on high-frequency technical terms. Google Translate then covers everything the dictionary misses, keeping the output fully in English before concept extraction begins.
 
 ### Stage 4 — Concept Extraction (`src/concept_extractor/hybrid_extractor.py`)
 
@@ -194,7 +195,8 @@ Each video produces a `{video_id}_complete_output.json` file with this structure
       "source": "concept_2",
       "target": "concept_1",
       "confidence": 0.91,
-      "strength": "strong"
+      "strength": "strong",
+      "relationship_type": "strict_prerequisite"
     }
   ]
 }
@@ -206,6 +208,7 @@ Each video produces a `{video_id}_complete_output.json` file with this structure
 - **`validation_method` field** — transparency flag. `groq_llm` means the LLM confirmed the concept; `rule_based_free` means the API was unavailable and the concept passed only the NLP filter. Downstream consumers can choose to trust only LLM-validated concepts.
 - **`nlp_scores` preserved** — allows debugging and re-ranking without re-running the full pipeline.
 - **`strength` field on relationships** — `strong` (confidence > 0.85), `moderate` (> 0.70), `weak` (≥ 0.50) — lets UIs render edge weight visually without recomputing thresholds.
+- **`relationship_type` field** — one of `strict_prerequisite` (must learn first), `recommended_prerequisite` (helpful but not mandatory), or `related` (connected concepts at similar level). Set by Groq Llama during prerequisite validation.
 
 ---
 

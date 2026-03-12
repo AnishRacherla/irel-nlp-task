@@ -148,7 +148,8 @@ class PedagogicalFlowPipeline:
                     'source': prereq.get('prerequisite_id', prereq.get('prerequisite')),
                     'target': prereq.get('target_id', prereq.get('target')),
                     'confidence': prereq.get('confidence', 0.5),
-                    'strength': prereq.get('strength', 'moderate')
+                    'strength': prereq.get('strength', 'moderate'),
+                    'relationship_type': prereq.get('relationship_type', 'related')
                 })
             
             # Enrich each concept with its prerequisite/enables info
