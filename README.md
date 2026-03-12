@@ -35,7 +35,7 @@ This system adds a translation/standardisation layer before concept extraction a
 | ID | URL | Language Mix | Domain |
 |---|---|---|---|
 | video_1 | [youtu.be/DWpVGpNfDmM](https://www.youtube.com/watch?v=DWpVGpNfDmM&list=PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU&index=8) | English + Hindi | Computer Science (Python) |
-| video_2 | [youtu.be/SkE2kD2U4tU](https://www.youtube.com/watch?v=SkE2kD2U4tU) | English + Telugu | Physics (Computer Science ) |
+| video_2 | [youtu.be/253EkOqCrmM](https://www.youtube.com/watch?v=253EkOqCrmM) | English + hindi | Physics (Physics) |
 | video_3 | [youtu.be/-kGMwaROIZk](https://www.youtube.com/watch?v=-kGMwaROIZk&list=PL724pdDXl9Q1KxL7dQ6HlyjO7tbJzfh5f) | English + Hindi | Computer Science (Python) |
 | video_4 | [youtu.be/SkE2kD2U4tU](https://www.youtube.com/watch?v=SkE2kD2U4tU) | English + Telugu | Physics (Magnetism) |
 | video_5 | [youtu.be/98BzS5Oz5E4](https://www.youtube.com/watch?v=98BzS5Oz5E4) | English + Hindi | Computer Science |
