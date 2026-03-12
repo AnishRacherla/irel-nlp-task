@@ -51,7 +51,7 @@ YouTube URL
     │
     ▼
 ┌─────────────────────────────┐
-│  1. Transcription           │  OpenAI Whisper (base, GPU)
+│  1. Transcription           │  OpenAI Whisper (large-v3, GPU)
 │     yt-dlp → audio → text  │
 └────────────┬────────────────┘
              │
@@ -102,7 +102,7 @@ YouTube URL
 
 ### Stage 1 — Transcription (`src/transcription/transcribe.py`)
 
-`yt-dlp` downloads the audio track; Whisper `base` converts it to text with timestamps. The `base` model is chosen for speed on Colab's free T4 GPU. The transcript is stored under `data/transcripts/`.
+`yt-dlp` downloads the audio track; Whisper `large-v3` converts it to text with timestamps. The `large-v3` model gives the best transcription accuracy, especially for code-mixed speech with Hindi/Telugu — the T4 GPU on Colab handles it within a reasonable time. The transcript is stored under `data/transcripts/`.
 
 ### Stage 2 — Preprocessing (`src/preprocessing/preprocessor.py`)
 
@@ -289,7 +289,7 @@ All settings are in `config/config.yaml`. Key options:
 
 | Section | Key | Default | Description |
 |---|---|---|---|
-| `transcription` | `whisper_model_size` | `base` | Whisper model size (`tiny`, `base`, `small`, `medium`) |
+| `transcription` | `whisper_model_size` | `large-v3` | Whisper model size (`tiny`, `base`, `small`, `medium`, `large-v3`) |
 | `concept_extraction` | `groq_model` | `llama-3.3-70b-versatile` | Groq model for concept validation |
 | `concept_extraction` | `max_concepts_per_video` | `20` | Maximum concepts to extract |
 | `concept_extraction` | `min_concept_confidence` | `0.7` | Minimum score to keep a candidate |
