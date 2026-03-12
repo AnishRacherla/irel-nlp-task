@@ -60,12 +60,17 @@ class VideoTranscriber:
             # Output template (will get actual extension from yt-dlp)
             output_template = str(self.audio_dir / f"{video_id}.%(ext)s")
             
-            # yt-dlp options(NO FFmpeg postprocessing - download audio as-is)
+            # yt-dlp options (NO FFmpeg postprocessing - download audio as-is)
             ydl_opts = {
-                'format': 'bestaudio/best',  # Download best audio without conversion
+                'format': 'bestaudio/best',
                 'outtmpl': output_template,
                 'quiet': False,
                 'no_warnings': False,
+                # Bypass YouTube bot detection (needed on Colab/cloud IPs)
+                'extractor_args': {'youtube': {'player_client': ['web', 'android']}},
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                },
             }
             
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
