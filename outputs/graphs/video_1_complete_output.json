@@ -26,7 +26,7 @@
       "nlp_scores": {
         "keybert": 0.0,
         "np_frequency": 0.8063291139240507,
-        "temporal_position": 0.9125,
+        "temporal_positioan": 0.9125,
         "combined": 0.6625632911392406
       }
     },

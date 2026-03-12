@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
   <key id="d5" for="edge" attr.name="reasoning" attr.type="string" />
-  <key id="d4" for="edge" attr.name="confidence" attr.type="float" />
+  <key id="d4" for="edge" attr.name="confidence" attr.type="double" />
   <key id="d3" for="edge" attr.name="type" attr.type="string" />
   <key id="d2" for="node" attr.name="importance" attr.type="long" />
   <key id="d1" for="node" attr.name="description" attr.type="string" />
@@ -94,7 +94,7 @@
     </edge>
     <edge source="concept_4" target="concept_1">
       <data key="d3">moderate</data>
-      <data key="d4">0.73438126</data>
+      <data key="d4">0.7343812584877014</data>
       <data key="d5">Confidence: 0.73</data>
     </edge>
     <edge source="concept_8" target="concept_11">
@@ -109,7 +109,7 @@
     </edge>
     <edge source="concept_9" target="concept_10">
       <data key="d3">moderate</data>
-      <data key="d4">0.7499954</data>
+      <data key="d4">0.7499954104423523</data>
       <data key="d5">Confidence: 0.75</data>
     </edge>
     <edge source="concept_10" target="concept_13">

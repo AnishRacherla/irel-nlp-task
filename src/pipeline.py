@@ -151,8 +151,24 @@ class PedagogicalFlowPipeline:
                     'strength': prereq.get('strength', 'moderate')
                 })
             
+            # Enrich each concept with its prerequisite/enables info
+            concept_id_to_name = {c['id']: c['name'] for c in concepts}
+            prereq_map = {}   # concept_id -> list of {id, name, confidence} it requires
+            enables_map = {}  # concept_id -> list of {id, name, confidence} it unlocks
+            for rel in relationships_for_viz:
+                src, tgt, conf = rel['source'], rel['target'], rel.get('confidence', 0.5)
+                enables_map.setdefault(src, []).append({'id': tgt, 'name': concept_id_to_name.get(tgt, tgt), 'confidence': conf})
+                prereq_map.setdefault(tgt, []).append({'id': src, 'name': concept_id_to_name.get(src, src), 'confidence': conf})
+
+            enriched_concepts = []
+            for c in concepts:
+                enriched = dict(c)
+                enriched['prerequisites'] = prereq_map.get(c['id'], [])
+                enriched['enables'] = enables_map.get(c['id'], [])
+                enriched_concepts.append(enriched)
+
             viz_data = {
-                'concepts': concepts,
+                'concepts': enriched_concepts,
                 'relationships': relationships_for_viz
             }
             

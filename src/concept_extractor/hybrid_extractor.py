@@ -11,6 +11,11 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from groq import Groq
+try:
+    import wikipediaapi
+    WIKIPEDIA_AVAILABLE = True
+except ImportError:
+    WIKIPEDIA_AVAILABLE = False
 
 
 class HybridConceptExtractor:
@@ -33,6 +38,10 @@ class HybridConceptExtractor:
         # Initialize models
         self.keybert_model = None
         self.embedding_model = None
+
+        # Wikipedia API for domain-agnostic concept validation
+        self._wiki = None
+        self._wiki_cache: Dict[str, bool] = {}  # phrase -> has_wiki_page
     
     def _load_models(self):
         """Load KeyBERT and embedding models lazily (uses GPU if available)"""
@@ -111,23 +120,16 @@ class HybridConceptExtractor:
             'journey', 'learning', 'area', 'point', 'work', 'what'
         }
         
-        # Technical indicators (suggests educational concept)
-        technical_patterns = [
-            lambda w: w[0].isupper() and len(w) > 3,  # Capitalized technical terms
-            lambda w: w.lower() in [
-                'python', 'java', 'javascript', 'algorithm', 'data', 'structure',
-                'machine', 'learning', 'neural', 'network', 'database', 'query',
-                'binary', 'tree', 'graph', 'array', 'list', 'stack', 'queue',
-                'sort', 'search', 'hash', 'table', 'api', 'server', 'client',
-                # Physics / electronics
-                'solenoid', 'electromagnet', 'magnetism', 'electromagnetism',
-                'conductor', 'resistor', 'capacitor', 'inductor', 'transistor',
-                'voltage', 'current', 'resistance', 'circuit', 'frequency',
-                # General CS
-                'recursion', 'polymorphism', 'inheritance', 'encapsulation',
-                'abstraction', 'compiler', 'interpreter', 'pointer', 'memory',
-            ],
-        ]
+        # Wikipedia API: domain-agnostic concept boost
+        if WIKIPEDIA_AVAILABLE and self._wiki is None:
+            try:
+                self._wiki = wikipediaapi.Wikipedia(
+                    language='en',
+                    extract_format=wikipediaapi.ExtractFormat.WIKI,
+                    user_agent='irel-nlp-concept-extractor/1.0'
+                )
+            except Exception:
+                self._wiki = None
 
         # Count frequencies
         phrase_counts = Counter(np.lower() for np in noun_phrases)
@@ -154,21 +156,30 @@ class HybridConceptExtractor:
             # Quality scoring
             base_score = count / max_count
             
-            # Boost score for technical indicators
-            technical_boost = 0
-            for word in words:
-                for pattern in technical_patterns:
-                    try:
-                        if pattern(word):
-                            technical_boost += 0.3
-                            break
-                    except:
-                        pass
-            
+            # Boost score using Wikipedia existence (domain-agnostic)
+            technical_boost = 0.0
+            if self._wiki is not None:
+                # Check full phrase first, then individual words
+                candidates_to_check = [phrase] + ([words[0]] if len(words) > 1 else [])
+                for candidate in candidates_to_check:
+                    key = candidate.lower()
+                    if key not in self._wiki_cache:
+                        try:
+                            self._wiki_cache[key] = self._wiki.page(candidate).exists()
+                        except Exception:
+                            self._wiki_cache[key] = False
+                    if self._wiki_cache[key]:
+                        technical_boost += 0.35
+                        break  # One Wikipedia hit is enough
+            else:
+                # Fallback: simple capitalisation heuristic if Wikipedia unavailable
+                if any(w[0].isupper() and len(w) > 3 for w in words):
+                    technical_boost += 0.15
+
             # Boost for compound nouns (noun+noun patterns are usually technical)
             if len(words) >= 2 and words[0][0].islower() and words[1][0].islower():
                 technical_boost += 0.2
-            
+
             # Boost for mixed case (e.g., "Python Programming")
             if any(w[0].isupper() for w in words) and len(words) >= 2:
                 technical_boost += 0.2
