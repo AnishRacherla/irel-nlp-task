@@ -60,14 +60,7 @@ class VideoTranscriber:
             # Output template (will get actual extension from yt-dlp)
             output_template = str(self.audio_dir / f"{video_id}.%(ext)s")
             
-            # Check if any audio file already exists for this video_id
-            existing_files = list(self.audio_dir.glob(f"{video_id}.*"))
-            if existing_files:
-                audio_path = existing_files[0]
-                self.logger.info(f"Audio file already exists: {audio_path}")
-                return audio_path
-            
-            # yt-dlp options (NO FFmpeg postprocessing - download audio as-is)
+            # yt-dlp options(NO FFmpeg postprocessing - download audio as-is)
             ydl_opts = {
                 'format': 'bestaudio/best',  # Download best audio without conversion
                 'outtmpl': output_template,
@@ -119,12 +112,7 @@ class VideoTranscriber:
             else:
                 result = self.whisper_model.transcribe(str(audio_path), language=language, verbose=False)
             
-            # Save transcript
-            transcript_path = self.transcripts_dir / f"{video_id}_transcript.json"
-            with open(transcript_path, 'w', encoding='utf-8') as f:
-                json.dump(result, f, ensure_ascii=False, indent=2)
-            
-            self.logger.info(f"Transcription completed: {transcript_path}")
+            self.logger.info(f"Transcription completed for {video_id}")
             self.logger.info(f"Detected language: {result.get('language', 'unknown')}")
             
             return result
@@ -145,13 +133,6 @@ class VideoTranscriber:
         Returns:
             Transcription result
         """
-        # Check if transcript already exists
-        transcript_path = self.transcripts_dir / f"{video_id}_transcript.json"
-        if transcript_path.exists():
-            self.logger.info(f"Loading existing transcript: {transcript_path}")
-            with open(transcript_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        
         # Download video
         audio_path = self.download_video(url, video_id)
         if audio_path is None:
