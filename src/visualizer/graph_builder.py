@@ -94,7 +94,7 @@ class GraphVisualizer:
         for node in graph_data.get('nodes', []):
             G.add_node(
                 node['id'],
-                name=node['name'],
+                label=node['name'],
                 description=node.get('description', ''),
                 importance=node.get('importance', 3)
             )
