@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "Mernstack",
+      "description": "A set of technologies used for building interactive and data-driven web applications",
+      "importance": 5
+    },
+    {
+      "id": "concept_2",
+      "name": "Front end",
+      "description": "The client-side of a web application, responsible for user interaction",
+      "importance": 4
+    },
+    {
+      "id": "concept_3",
+      "name": "Back end",
+      "description": "The server-side of a web application, responsible for data storage and processing",
+      "importance": 4
+    },
+    {
+      "id": "concept_4",
+      "name": "Full stack",
+      "description": "A web development approach that involves working on both front end and back end",
+      "importance": 5
+    },
+    {
+      "id": "concept_5",
+      "name": "React",
+      "description": "A JavaScript library for building user interfaces",
+      "importance": 4
+    },
+    {
+      "id": "concept_6",
+      "name": "Node.js",
+      "description": "A JavaScript runtime environment for building server-side applications",
+      "importance": 4
+    },
+    {
+      "id": "concept_7",
+      "name": "Express",
+      "description": "A Node.js framework for building web applications",
+      "importance": 4
+    },
+    {
+      "id": "concept_8",
+      "name": "MongoDB",
+      "description": "A NoSQL database for storing and retrieving data",
+      "importance": 4
+    },
+    {
+      "id": "concept_9",
+      "name": "API",
+      "description": "An application programming interface for interacting with a web application",
+      "importance": 4
+    },
+    {
+      "id": "concept_10",
+      "name": "Browser",
+      "description": "A software application for accessing and viewing web pages",
+      "importance": 3
+    },
+    {
+      "id": "concept_11",
+      "name": "Database",
+      "description": "A collection of organized data stored in a way that allows for efficient retrieval",
+      "importance": 4
+    },
+    {
+      "id": "concept_12",
+      "name": "Authentication",
+      "description": "The process of verifying the identity of a user or system",
+      "importance": 4
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_2",
+      "target_id": "concept_4",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_3",
+      "target_id": "concept_4",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_5",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_6",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_8",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_9",
+      "target_id": "concept_3",
+      "confidence": 0.7,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.70"
+    },
+    {
+      "source_id": "concept_10",
+      "target_id": "concept_2",
+      "confidence": 0.7,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.70"
+    },
+    {
+      "source_id": "concept_11",
+      "target_id": "concept_3",
+      "confidence": 0.7,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.70"
+    },
+    {
+      "source_id": "concept_12",
+      "target_id": "concept_3",
+      "confidence": 0.6,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.60"
+    }
+  ]
+}

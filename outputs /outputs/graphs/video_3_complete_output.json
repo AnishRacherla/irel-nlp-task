@@ -1,0 +1,349 @@
+{
+  "concepts": [
+    {
+      "id": "concept_1",
+      "name": "Algorithms",
+      "description": "A set of instructions used to solve a specific problem or perform a particular task",
+      "importance": 5,
+      "category": "fundamental",
+      "keywords": [
+        "problem-solving",
+        "instructions",
+        "task"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_3",
+          "name": "Programming Language",
+          "confidence": 0.8
+        },
+        {
+          "id": "concept_2",
+          "name": "Data Structures",
+          "confidence": 0.9
+        }
+      ],
+      "enables": [
+        {
+          "id": "concept_6",
+          "name": "Run Time",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "concept_2",
+      "name": "Data Structures",
+      "description": "A way of organizing and storing data in a computer so that it can be efficiently accessed and modified",
+      "importance": 5,
+      "category": "fundamental",
+      "keywords": [
+        "organization",
+        "storage",
+        "access"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_1",
+          "name": "Algorithms",
+          "confidence": 0.9
+        },
+        {
+          "id": "concept_9",
+          "name": "Software Engineering",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_3",
+      "name": "Programming Language",
+      "description": "A language used to write instructions that a computer can understand",
+      "importance": 5,
+      "category": "fundamental",
+      "keywords": [
+        "language",
+        "instructions",
+        "computer"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_1",
+          "name": "Algorithms",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_4",
+      "name": "Linear Data Structure",
+      "description": "A type of data structure where elements are arranged in a sequential manner",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "sequence",
+        "array",
+        "list"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_7",
+          "name": "Primitive Data Structure",
+          "confidence": 0.7
+        }
+      ],
+      "enables": [
+        {
+          "id": "concept_8",
+          "name": "Non-Primitive Data Structure",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "concept_5",
+      "name": "Non-Linear Data Structure",
+      "description": "A type of data structure where elements are not arranged in a sequential manner",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "tree",
+        "graph",
+        "network"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_7",
+          "name": "Primitive Data Structure",
+          "confidence": 0.7
+        }
+      ],
+      "enables": [
+        {
+          "id": "concept_8",
+          "name": "Non-Primitive Data Structure",
+          "confidence": 0.6
+        }
+      ]
+    },
+    {
+      "id": "concept_6",
+      "name": "Run Time",
+      "description": "The time it takes for a program to execute",
+      "importance": 3,
+      "category": "intermediate",
+      "keywords": [
+        "execution",
+        "time",
+        "performance"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_1",
+          "name": "Algorithms",
+          "confidence": 0.7
+        }
+      ],
+      "enables": []
+    },
+    {
+      "id": "concept_7",
+      "name": "Primitive Data Structure",
+      "description": "A basic type of data structure that cannot be broken down further",
+      "importance": 3,
+      "category": "intermediate",
+      "keywords": [
+        "basic",
+        "simple",
+        "fundamental"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_4",
+          "name": "Linear Data Structure",
+          "confidence": 0.7
+        },
+        {
+          "id": "concept_5",
+          "name": "Non-Linear Data Structure",
+          "confidence": 0.7
+        },
+        {
+          "id": "concept_8",
+          "name": "Non-Primitive Data Structure",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_8",
+      "name": "Non-Primitive Data Structure",
+      "description": "A complex type of data structure that can be broken down into simpler components",
+      "importance": 3,
+      "category": "intermediate",
+      "keywords": [
+        "complex",
+        "composite",
+        "structured"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_7",
+          "name": "Primitive Data Structure",
+          "confidence": 0.8
+        },
+        {
+          "id": "concept_4",
+          "name": "Linear Data Structure",
+          "confidence": 0.6
+        },
+        {
+          "id": "concept_5",
+          "name": "Non-Linear Data Structure",
+          "confidence": 0.6
+        }
+      ],
+      "enables": []
+    },
+    {
+      "id": "concept_9",
+      "name": "Software Engineering",
+      "description": "The application of engineering principles to the design, development, and testing of software",
+      "importance": 4,
+      "category": "advanced",
+      "keywords": [
+        "engineering",
+        "design",
+        "development"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_2",
+          "name": "Data Structures",
+          "confidence": 0.8
+        },
+        {
+          "id": "concept_10",
+          "name": "Computer Science",
+          "confidence": 0.8
+        }
+      ],
+      "enables": []
+    },
+    {
+      "id": "concept_10",
+      "name": "Computer Science",
+      "description": "The study of the theory, design, and implementation of computer systems and applications",
+      "importance": 5,
+      "category": "fundamental",
+      "keywords": [
+        "theory",
+        "design",
+        "implementation"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_9",
+          "name": "Software Engineering",
+          "confidence": 0.8
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source": "concept_3",
+      "target": "concept_1",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "recommended_prerequisite"
+    },
+    {
+      "source": "concept_2",
+      "target": "concept_1",
+      "confidence": 0.9,
+      "strength": "strong",
+      "relationship_type": "strict_prerequisite"
+    },
+    {
+      "source": "concept_2",
+      "target": "concept_9",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "recommended_prerequisite"
+    },
+    {
+      "source": "concept_7",
+      "target": "concept_4",
+      "confidence": 0.7,
+      "strength": "weak",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_7",
+      "target": "concept_5",
+      "confidence": 0.7,
+      "strength": "weak",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_7",
+      "target": "concept_8",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "strict_prerequisite"
+    },
+    {
+      "source": "concept_4",
+      "target": "concept_8",
+      "confidence": 0.6,
+      "strength": "weak",
+      "relationship_type": "related"
+    },
+    {
+      "source": "concept_5",
+      "target": "concept_8",
+      "confidence": 0.6,
+      "strength": "weak",
+      "relationship_type": "related"
+    },
+    {
+      "source": "concept_1",
+      "target": "concept_6",
+      "confidence": 0.7,
+      "strength": "weak",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_10",
+      "target": "concept_9",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "recommended_prerequisite"
+    }
+  ]
+}

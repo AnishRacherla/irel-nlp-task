@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d5" for="edge" attr.name="reasoning" attr.type="string" />
+  <key id="d4" for="edge" attr.name="confidence" attr.type="double" />
+  <key id="d3" for="edge" attr.name="type" attr.type="string" />
+  <key id="d2" for="node" attr.name="importance" attr.type="long" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="name" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="concept_1">
+      <data key="d0">Python Programming</data>
+      <data key="d1">A high-level, interpreted programming language</data>
+      <data key="d2">5</data>
+    </node>
+    <node id="concept_2">
+      <data key="d0">AI Tools</data>
+      <data key="d1">Software applications that utilize artificial intelligence</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_3">
+      <data key="d0">Data Science</data>
+      <data key="d1">A field of study that extracts knowledge from data</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_4">
+      <data key="d0">Python Fundamentals</data>
+      <data key="d1">Basic concepts and syntax of the Python programming language</data>
+      <data key="d2">5</data>
+    </node>
+    <node id="concept_5">
+      <data key="d0">Web Development</data>
+      <data key="d1">The process of building and maintaining websites</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_6">
+      <data key="d0">AI ML</data>
+      <data key="d1">Artificial intelligence and machine learning</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_7">
+      <data key="d0">Data Analyst</data>
+      <data key="d1">A professional who analyzes and interprets data</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_8">
+      <data key="d0">Scripting</data>
+      <data key="d1">The process of writing scripts to automate tasks</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_9">
+      <data key="d0">File Handling</data>
+      <data key="d1">The process of managing and manipulating files</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_10">
+      <data key="d0">Version Control</data>
+      <data key="d1">The process of managing changes to code or documents</data>
+      <data key="d2">4</data>
+    </node>
+    <edge source="concept_1" target="concept_5">
+      <data key="d3">strong</data>
+      <data key="d4">0.9</data>
+      <data key="d5">Confidence: 0.90</data>
+    </edge>
+    <edge source="concept_1" target="concept_6">
+      <data key="d3">strong</data>
+      <data key="d4">0.9</data>
+      <data key="d5">Confidence: 0.90</data>
+    </edge>
+    <edge source="concept_1" target="concept_3">
+      <data key="d3">strong</data>
+      <data key="d4">0.9</data>
+      <data key="d5">Confidence: 0.90</data>
+    </edge>
+    <edge source="concept_1" target="concept_7">
+      <data key="d3">moderate</data>
+      <data key="d4">0.85</data>
+      <data key="d5">Confidence: 0.85</data>
+    </edge>
+    <edge source="concept_1" target="concept_8">
+      <data key="d3">moderate</data>
+      <data key="d4">0.85</data>
+      <data key="d5">Confidence: 0.85</data>
+    </edge>
+    <edge source="concept_1" target="concept_2">
+      <data key="d3">moderate</data>
+      <data key="d4">0.85</data>
+      <data key="d5">Confidence: 0.85</data>
+    </edge>
+    <edge source="concept_4" target="concept_1">
+      <data key="d3">strong</data>
+      <data key="d4">0.95</data>
+      <data key="d5">Confidence: 0.95</data>
+    </edge>
+    <edge source="concept_4" target="concept_9">
+      <data key="d3">moderate</data>
+      <data key="d4">0.8</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_9" target="concept_10">
+      <data key="d3">moderate</data>
+      <data key="d4">0.8</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+  </graph>
+</graphml>

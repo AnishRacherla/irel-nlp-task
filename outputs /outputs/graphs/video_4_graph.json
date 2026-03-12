@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "The Magnetic Field",
+      "description": "A region around a magnetic substance where magnetic forces can be detected",
+      "importance": 5
+    },
+    {
+      "id": "concept_2",
+      "name": "The Magnetism",
+      "description": "A physical phenomenon resulting from the interaction between magnetic fields",
+      "importance": 5
+    },
+    {
+      "id": "concept_3",
+      "name": "The Circuit",
+      "description": "A path through which electric current flows",
+      "importance": 4
+    },
+    {
+      "id": "concept_4",
+      "name": "The Compass",
+      "description": "A device used to detect and measure magnetic fields",
+      "importance": 4
+    },
+    {
+      "id": "concept_5",
+      "name": "The Current",
+      "description": "The flow of electric charge",
+      "importance": 5
+    },
+    {
+      "id": "concept_6",
+      "name": "A Wire",
+      "description": "A conductor through which electric current flows",
+      "importance": 4
+    },
+    {
+      "id": "concept_7",
+      "name": "The Direction",
+      "description": "The orientation of a magnetic field or electric current",
+      "importance": 4
+    },
+    {
+      "id": "concept_8",
+      "name": "The Needle",
+      "description": "A component of a compass that indicates the direction of a magnetic field",
+      "importance": 4
+    },
+    {
+      "id": "concept_9",
+      "name": "Electromagnetism",
+      "description": "A fundamental physical phenomenon that describes the interaction between electric and magnetic fields",
+      "importance": 5
+    },
+    {
+      "id": "concept_10",
+      "name": "Oersted's Experiment",
+      "description": "A historical experiment that demonstrated the relationship between electric current and magnetic fields",
+      "importance": 5
+    },
+    {
+      "id": "concept_11",
+      "name": "Magnetic Substance",
+      "description": "A material that is capable of being magnetized or exhibiting magnetic properties",
+      "importance": 4
+    },
+    {
+      "id": "concept_12",
+      "name": "Ferromagnetic Substance",
+      "description": "A type of magnetic substance that is strongly attracted to magnets",
+      "importance": 4
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_5",
+      "target_id": "concept_3",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_6",
+      "target_id": "concept_3",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_5",
+      "target_id": "concept_6",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_9",
+      "target_id": "concept_2",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_2",
+      "target_id": "concept_1",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_11",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_12",
+      "target_id": "concept_11",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_10",
+      "target_id": "concept_9",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    }
+  ]
+}

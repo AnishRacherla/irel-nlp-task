@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "Vector",
+      "description": "A quantity with both magnitude and direction",
+      "importance": 5
+    },
+    {
+      "id": "concept_2",
+      "name": "Scalar",
+      "description": "A quantity with only magnitude, no direction",
+      "importance": 5
+    },
+    {
+      "id": "concept_3",
+      "name": "Magnitude",
+      "description": "The amount or size of a quantity",
+      "importance": 4
+    },
+    {
+      "id": "concept_4",
+      "name": "Direction",
+      "description": "The way or orientation of a quantity",
+      "importance": 4
+    },
+    {
+      "id": "concept_5",
+      "name": "Velocity",
+      "description": "The rate of change of an object's position, with both magnitude and direction",
+      "importance": 4
+    },
+    {
+      "id": "concept_6",
+      "name": "Speed",
+      "description": "The rate of change of an object's position, with only magnitude",
+      "importance": 4
+    },
+    {
+      "id": "concept_7",
+      "name": "Displacement",
+      "description": "The change in an object's position, with both magnitude and direction",
+      "importance": 4
+    },
+    {
+      "id": "concept_8",
+      "name": "Force",
+      "description": "A push or pull that causes an object to change its motion",
+      "importance": 4
+    },
+    {
+      "id": "concept_9",
+      "name": "Vector Representation",
+      "description": "A way to visually represent a vector using an arrow",
+      "importance": 3
+    },
+    {
+      "id": "concept_10",
+      "name": "Quantity",
+      "description": "A measure or amount of something",
+      "importance": 3
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_2",
+      "target_id": "concept_1",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_9",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_3",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_4",
+      "target_id": "concept_1",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_5",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_6",
+      "target_id": "concept_5",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_7",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_8",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_10",
+      "target_id": "concept_3",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    }
+  ]
+}

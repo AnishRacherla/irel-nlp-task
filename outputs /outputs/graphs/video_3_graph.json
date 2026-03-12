@@ -1,0 +1,136 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "Algorithms",
+      "description": "A set of instructions used to solve a specific problem or perform a particular task",
+      "importance": 5
+    },
+    {
+      "id": "concept_2",
+      "name": "Data Structures",
+      "description": "A way of organizing and storing data in a computer so that it can be efficiently accessed and modified",
+      "importance": 5
+    },
+    {
+      "id": "concept_3",
+      "name": "Programming Language",
+      "description": "A language used to write instructions that a computer can understand",
+      "importance": 5
+    },
+    {
+      "id": "concept_4",
+      "name": "Linear Data Structure",
+      "description": "A type of data structure where elements are arranged in a sequential manner",
+      "importance": 4
+    },
+    {
+      "id": "concept_5",
+      "name": "Non-Linear Data Structure",
+      "description": "A type of data structure where elements are not arranged in a sequential manner",
+      "importance": 4
+    },
+    {
+      "id": "concept_6",
+      "name": "Run Time",
+      "description": "The time it takes for a program to execute",
+      "importance": 3
+    },
+    {
+      "id": "concept_7",
+      "name": "Primitive Data Structure",
+      "description": "A basic type of data structure that cannot be broken down further",
+      "importance": 3
+    },
+    {
+      "id": "concept_8",
+      "name": "Non-Primitive Data Structure",
+      "description": "A complex type of data structure that can be broken down into simpler components",
+      "importance": 3
+    },
+    {
+      "id": "concept_9",
+      "name": "Software Engineering",
+      "description": "The application of engineering principles to the design, development, and testing of software",
+      "importance": 4
+    },
+    {
+      "id": "concept_10",
+      "name": "Computer Science",
+      "description": "The study of the theory, design, and implementation of computer systems and applications",
+      "importance": 5
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_3",
+      "target_id": "concept_1",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_2",
+      "target_id": "concept_1",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_2",
+      "target_id": "concept_9",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_4",
+      "confidence": 0.7,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.70"
+    },
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_5",
+      "confidence": 0.7,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.70"
+    },
+    {
+      "source_id": "concept_7",
+      "target_id": "concept_8",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_4",
+      "target_id": "concept_8",
+      "confidence": 0.6,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.60"
+    },
+    {
+      "source_id": "concept_5",
+      "target_id": "concept_8",
+      "confidence": 0.6,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.60"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_6",
+      "confidence": 0.7,
+      "relationship_type": "weak",
+      "reasoning": "Confidence: 0.70"
+    },
+    {
+      "source_id": "concept_10",
+      "target_id": "concept_9",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    }
+  ]
+}

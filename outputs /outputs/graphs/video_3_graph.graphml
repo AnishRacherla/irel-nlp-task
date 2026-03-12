@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d5" for="edge" attr.name="reasoning" attr.type="string" />
+  <key id="d4" for="edge" attr.name="confidence" attr.type="double" />
+  <key id="d3" for="edge" attr.name="type" attr.type="string" />
+  <key id="d2" for="node" attr.name="importance" attr.type="long" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="name" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="concept_1">
+      <data key="d0">Algorithms</data>
+      <data key="d1">A set of instructions used to solve a specific problem or perform a particular task</data>
+      <data key="d2">5</data>
+    </node>
+    <node id="concept_2">
+      <data key="d0">Data Structures</data>
+      <data key="d1">A way of organizing and storing data in a computer so that it can be efficiently accessed and modified</data>
+      <data key="d2">5</data>
+    </node>
+    <node id="concept_3">
+      <data key="d0">Programming Language</data>
+      <data key="d1">A language used to write instructions that a computer can understand</data>
+      <data key="d2">5</data>
+    </node>
+    <node id="concept_4">
+      <data key="d0">Linear Data Structure</data>
+      <data key="d1">A type of data structure where elements are arranged in a sequential manner</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_5">
+      <data key="d0">Non-Linear Data Structure</data>
+      <data key="d1">A type of data structure where elements are not arranged in a sequential manner</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_6">
+      <data key="d0">Run Time</data>
+      <data key="d1">The time it takes for a program to execute</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_7">
+      <data key="d0">Primitive Data Structure</data>
+      <data key="d1">A basic type of data structure that cannot be broken down further</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_8">
+      <data key="d0">Non-Primitive Data Structure</data>
+      <data key="d1">A complex type of data structure that can be broken down into simpler components</data>
+      <data key="d2">3</data>
+    </node>
+    <node id="concept_9">
+      <data key="d0">Software Engineering</data>
+      <data key="d1">The application of engineering principles to the design, development, and testing of software</data>
+      <data key="d2">4</data>
+    </node>
+    <node id="concept_10">
+      <data key="d0">Computer Science</data>
+      <data key="d1">The study of the theory, design, and implementation of computer systems and applications</data>
+      <data key="d2">5</data>
+    </node>
+    <edge source="concept_1" target="concept_6">
+      <data key="d3">weak</data>
+      <data key="d4">0.7</data>
+      <data key="d5">Confidence: 0.70</data>
+    </edge>
+    <edge source="concept_2" target="concept_1">
+      <data key="d3">strong</data>
+      <data key="d4">0.9</data>
+      <data key="d5">Confidence: 0.90</data>
+    </edge>
+    <edge source="concept_2" target="concept_9">
+      <data key="d3">moderate</data>
+      <data key="d4">0.8</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_3" target="concept_1">
+      <data key="d3">moderate</data>
+      <data key="d4">0.8</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_4" target="concept_8">
+      <data key="d3">weak</data>
+      <data key="d4">0.6</data>
+      <data key="d5">Confidence: 0.60</data>
+    </edge>
+    <edge source="concept_5" target="concept_8">
+      <data key="d3">weak</data>
+      <data key="d4">0.6</data>
+      <data key="d5">Confidence: 0.60</data>
+    </edge>
+    <edge source="concept_7" target="concept_4">
+      <data key="d3">weak</data>
+      <data key="d4">0.7</data>
+      <data key="d5">Confidence: 0.70</data>
+    </edge>
+    <edge source="concept_7" target="concept_5">
+      <data key="d3">weak</data>
+      <data key="d4">0.7</data>
+      <data key="d5">Confidence: 0.70</data>
+    </edge>
+    <edge source="concept_7" target="concept_8">
+      <data key="d3">moderate</data>
+      <data key="d4">0.8</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+    <edge source="concept_10" target="concept_9">
+      <data key="d3">moderate</data>
+      <data key="d4">0.8</data>
+      <data key="d5">Confidence: 0.80</data>
+    </edge>
+  </graph>
+</graphml>

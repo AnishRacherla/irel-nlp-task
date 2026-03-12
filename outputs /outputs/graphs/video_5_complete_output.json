@@ -1,0 +1,382 @@
+{
+  "concepts": [
+    {
+      "id": "concept_1",
+      "name": "Mernstack",
+      "description": "A set of technologies used for building interactive and data-driven web applications",
+      "importance": 5,
+      "category": "intermediate",
+      "keywords": [
+        "MERN",
+        "full stack",
+        "web development"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_5",
+          "name": "React",
+          "confidence": 0.8
+        },
+        {
+          "id": "concept_6",
+          "name": "Node.js",
+          "confidence": 0.8
+        },
+        {
+          "id": "concept_7",
+          "name": "Express",
+          "confidence": 0.8
+        },
+        {
+          "id": "concept_8",
+          "name": "MongoDB",
+          "confidence": 0.8
+        }
+      ],
+      "enables": []
+    },
+    {
+      "id": "concept_2",
+      "name": "Front end",
+      "description": "The client-side of a web application, responsible for user interaction",
+      "importance": 4,
+      "category": "fundamental",
+      "keywords": [
+        "client-side",
+        "React",
+        "browser"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_10",
+          "name": "Browser",
+          "confidence": 0.7
+        }
+      ],
+      "enables": [
+        {
+          "id": "concept_4",
+          "name": "Full stack",
+          "confidence": 0.9
+        }
+      ]
+    },
+    {
+      "id": "concept_3",
+      "name": "Back end",
+      "description": "The server-side of a web application, responsible for data storage and processing",
+      "importance": 4,
+      "category": "fundamental",
+      "keywords": [
+        "server-side",
+        "Node.js",
+        "API"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_9",
+          "name": "API",
+          "confidence": 0.7
+        },
+        {
+          "id": "concept_11",
+          "name": "Database",
+          "confidence": 0.7
+        },
+        {
+          "id": "concept_12",
+          "name": "Authentication",
+          "confidence": 0.6
+        }
+      ],
+      "enables": [
+        {
+          "id": "concept_4",
+          "name": "Full stack",
+          "confidence": 0.9
+        }
+      ]
+    },
+    {
+      "id": "concept_4",
+      "name": "Full stack",
+      "description": "A web development approach that involves working on both front end and back end",
+      "importance": 5,
+      "category": "intermediate",
+      "keywords": [
+        "web development",
+        "MERN",
+        "full stack"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [
+        {
+          "id": "concept_2",
+          "name": "Front end",
+          "confidence": 0.9
+        },
+        {
+          "id": "concept_3",
+          "name": "Back end",
+          "confidence": 0.9
+        }
+      ],
+      "enables": []
+    },
+    {
+      "id": "concept_5",
+      "name": "React",
+      "description": "A JavaScript library for building user interfaces",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "JavaScript",
+        "library",
+        "UI"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_1",
+          "name": "Mernstack",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_6",
+      "name": "Node.js",
+      "description": "A JavaScript runtime environment for building server-side applications",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "JavaScript",
+        "runtime",
+        "server-side"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_1",
+          "name": "Mernstack",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_7",
+      "name": "Express",
+      "description": "A Node.js framework for building web applications",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "Node.js",
+        "framework",
+        "web application"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_1",
+          "name": "Mernstack",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_8",
+      "name": "MongoDB",
+      "description": "A NoSQL database for storing and retrieving data",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "NoSQL",
+        "database",
+        "data storage"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_1",
+          "name": "Mernstack",
+          "confidence": 0.8
+        }
+      ]
+    },
+    {
+      "id": "concept_9",
+      "name": "API",
+      "description": "An application programming interface for interacting with a web application",
+      "importance": 4,
+      "category": "fundamental",
+      "keywords": [
+        "interface",
+        "web application",
+        "interaction"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_3",
+          "name": "Back end",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "concept_10",
+      "name": "Browser",
+      "description": "A software application for accessing and viewing web pages",
+      "importance": 3,
+      "category": "fundamental",
+      "keywords": [
+        "software",
+        "web page",
+        "access"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_2",
+          "name": "Front end",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "concept_11",
+      "name": "Database",
+      "description": "A collection of organized data stored in a way that allows for efficient retrieval",
+      "importance": 4,
+      "category": "fundamental",
+      "keywords": [
+        "data",
+        "storage",
+        "retrieval"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_3",
+          "name": "Back end",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "concept_12",
+      "name": "Authentication",
+      "description": "The process of verifying the identity of a user or system",
+      "importance": 4,
+      "category": "intermediate",
+      "keywords": [
+        "security",
+        "identity",
+        "verification"
+      ],
+      "is_valid": true,
+      "validation_method": "groq_llm",
+      "prerequisites": [],
+      "enables": [
+        {
+          "id": "concept_3",
+          "name": "Back end",
+          "confidence": 0.6
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source": "concept_2",
+      "target": "concept_4",
+      "confidence": 0.9,
+      "strength": "strong",
+      "relationship_type": "strict_prerequisite"
+    },
+    {
+      "source": "concept_3",
+      "target": "concept_4",
+      "confidence": 0.9,
+      "strength": "strong",
+      "relationship_type": "strict_prerequisite"
+    },
+    {
+      "source": "concept_5",
+      "target": "concept_1",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_6",
+      "target": "concept_1",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_7",
+      "target": "concept_1",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_8",
+      "target": "concept_1",
+      "confidence": 0.8,
+      "strength": "moderate",
+      "relationship_type": "builds_on"
+    },
+    {
+      "source": "concept_9",
+      "target": "concept_3",
+      "confidence": 0.7,
+      "strength": "weak",
+      "relationship_type": "related"
+    },
+    {
+      "source": "concept_10",
+      "target": "concept_2",
+      "confidence": 0.7,
+      "strength": "weak",
+      "relationship_type": "related"
+    },
+    {
+      "source": "concept_11",
+      "target": "concept_3",
+      "confidence": 0.7,
+      "strength": "weak",
+      "relationship_type": "related"
+    },
+    {
+      "source": "concept_12",
+      "target": "concept_3",
+      "confidence": 0.6,
+      "strength": "weak",
+      "relationship_type": "recommended_prerequisite"
+    }
+  ]
+}

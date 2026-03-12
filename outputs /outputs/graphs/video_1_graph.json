@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "concept_1",
+      "name": "Python Programming",
+      "description": "A high-level, interpreted programming language",
+      "importance": 5
+    },
+    {
+      "id": "concept_2",
+      "name": "AI Tools",
+      "description": "Software applications that utilize artificial intelligence",
+      "importance": 4
+    },
+    {
+      "id": "concept_3",
+      "name": "Data Science",
+      "description": "A field of study that extracts knowledge from data",
+      "importance": 4
+    },
+    {
+      "id": "concept_4",
+      "name": "Python Fundamentals",
+      "description": "Basic concepts and syntax of the Python programming language",
+      "importance": 5
+    },
+    {
+      "id": "concept_5",
+      "name": "Web Development",
+      "description": "The process of building and maintaining websites",
+      "importance": 4
+    },
+    {
+      "id": "concept_6",
+      "name": "AI ML",
+      "description": "Artificial intelligence and machine learning",
+      "importance": 4
+    },
+    {
+      "id": "concept_7",
+      "name": "Data Analyst",
+      "description": "A professional who analyzes and interprets data",
+      "importance": 4
+    },
+    {
+      "id": "concept_8",
+      "name": "Scripting",
+      "description": "The process of writing scripts to automate tasks",
+      "importance": 4
+    },
+    {
+      "id": "concept_9",
+      "name": "File Handling",
+      "description": "The process of managing and manipulating files",
+      "importance": 3
+    },
+    {
+      "id": "concept_10",
+      "name": "Version Control",
+      "description": "The process of managing changes to code or documents",
+      "importance": 4
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "concept_4",
+      "target_id": "concept_1",
+      "confidence": 0.95,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.95"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_5",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_6",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_3",
+      "confidence": 0.9,
+      "relationship_type": "strong",
+      "reasoning": "Confidence: 0.90"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_7",
+      "confidence": 0.85,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.85"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_8",
+      "confidence": 0.85,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.85"
+    },
+    {
+      "source_id": "concept_4",
+      "target_id": "concept_9",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_9",
+      "target_id": "concept_10",
+      "confidence": 0.8,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.80"
+    },
+    {
+      "source_id": "concept_1",
+      "target_id": "concept_2",
+      "confidence": 0.85,
+      "relationship_type": "moderate",
+      "reasoning": "Confidence: 0.85"
+    }
+  ]
+}
